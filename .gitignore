@@ -31,3 +31,9 @@ pnpm-debug.log*
 .mcp.json
 .serena/
 .settings.json/
+
+#html-landing-page
+.homepage.html/
+.variant-accessible.html/
+.variant-swiss.html /
+.variant-biophilic.html /

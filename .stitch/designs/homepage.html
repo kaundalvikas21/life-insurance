@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Life Insurance | Final Expense &amp; Burial Specialist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;family=Public+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "primary": "#000b1f",
+                    "surface-container-low": "#f2f4f6",
+                    "primary-fixed": "#d5e3ff",
+                    "tertiary-fixed-dim": "#bdc7db",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed-dim": "#5dd5fa",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "on-background": "#191c1e",
+                    "on-primary-fixed": "#031c39",
+                    "on-secondary-fixed-variant": "#004e60",
+                    "on-secondary-container": "#005c72",
+                    "on-primary-fixed-variant": "#334767",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-surface-variant": "#44474e",
+                    "on-primary-container": "#758aad",
+                    "surface-bright": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#7f899c",
+                    "primary-fixed-dim": "#b2c7ee",
+                    "inverse-primary": "#b2c7ee",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-container": "#182231",
+                    "outline-variant": "#c4c6ce",
+                    "surface": "#f7f9fb",
+                    "surface-tint": "#4b5f80",
+                    "tertiary-fixed": "#d9e3f7",
+                    "secondary": "#00677f",
+                    "surface-container": "#eceef0",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#3d4757",
+                    "primary-container": "#0a2240",
+                    "on-tertiary-fixed": "#121c2a",
+                    "outline": "#74777e",
+                    "on-secondary-fixed": "#001f28",
+                    "background": "#f7f9fb",
+                    "secondary-fixed": "#b6eaff",
+                    "surface-dim": "#d8dadc",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface": "#191c1e",
+                    "secondary-container": "#60d7fd",
+                    "tertiary": "#030b19"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.75rem",
+                    "xl": "1rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["IBM Plex Sans", "sans-serif"],
+                    "body": ["IBM Plex Sans", "sans-serif"],
+                    "label": ["IBM Plex Sans", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'IBM Plex Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- 1. TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-[#0A2240] dark:bg-slate-950/85 shadow-[0_4px_24px_rgba(10,34,64,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tight text-white">Life Insurance</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-white border-b-2 border-[#00677F] pb-1 font-['IBM_Plex_Sans'] text-lg" href="#">Home</a>
+<a class="text-white/80 hover:text-white transition-colors font-['IBM_Plex_Sans'] text-lg" href="#">About</a>
+<a class="text-white/80 hover:text-white transition-colors font-['IBM_Plex_Sans'] text-lg" href="#">Plans</a>
+<a class="text-white/80 hover:text-white transition-colors font-['IBM_Plex_Sans'] text-lg" href="#">FAQ</a>
+<a class="text-white/80 hover:text-white transition-colors font-['IBM_Plex_Sans'] text-lg" href="#">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center px-4 py-2 rounded-full border border-secondary text-white font-medium text-sm">
+<span class="material-symbols-outlined mr-2 text-secondary" style="font-size: 18px;">call</span>
+                    (888) 000-0000
+                </div>
+<button class="bg-transparent border border-white/20 hover:bg-white/10 text-white px-6 py-2 rounded-lg transition-all duration-300 text-sm font-semibold">
+                    Get a Quote
+                </button>
+</div>
+</div>
+</nav>
+<!-- 2. Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-40 bg-gradient-to-br from-[#0A2240] to-[#0A1628] overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1.5 bg-[#FFB800]/20 text-[#FFB800] rounded-full text-xs font-bold tracking-widest uppercase mb-6">
+                    Average funeral costs $8,300
+                </span>
+<h1 class="text-5xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+                    Protect Your Family's Future
+                </h1>
+<p class="text-xl text-white/80 leading-relaxed mb-10 max-w-lg">
+                    Final expense coverage starting from $9/month. No medical exam required. Secure peace of mind today.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all duration-300 shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined mr-2">phone_in_talk</span>
+                        Call Now — (888) 000-0000
+                    </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/10 rounded-[2rem] blur-2xl transition duration-1000 group-hover:duration-200 group-hover:bg-secondary/20"></div>
+<div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Warm portrait of a senior couple smiling and embracing in a sunlit living room, representing security and happiness" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBwi_lI9b2hgLANJedzqtgh7YBY57twQ6nlrsTuNOOxBbIb3hH6I6tG17bloxNPU-pakkqNEASNP04qTpVhUo3xO8-UluH17xqRvpCSnLCrr2PCKv8nLj63c0lpGQtRrr93paCY4KZM8DeVTP53C_ElXjlwsSCLL8S6Zsv5kRkpmQSAjhIySdtPJEnD-JWAsQ3ANc2f_ckYd_zMxSd4V-bRukdH7uSOyPlS-UdA3sTq8ESPF67DBuIcYlAjDTv5UbnJfN86ZBBPM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Stats / Trust Bar -->
+<section class="bg-surface-container-lowest py-16">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+<div class="text-center lg:text-left">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">130+</div>
+<div class="text-on-surface-variant font-medium text-sm tracking-wide uppercase">Licensed Agents</div>
+</div>
+<div class="text-center lg:text-left">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">13</div>
+<div class="text-on-surface-variant font-medium text-sm tracking-wide uppercase">Carrier Partners</div>
+</div>
+<div class="text-center lg:text-left">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">49</div>
+<div class="text-on-surface-variant font-medium text-sm tracking-wide uppercase">States Licensed</div>
+</div>
+<div class="text-center lg:text-left">
+<div class="text-4xl md:text-5xl font-bold text-primary mb-2">$1M+</div>
+<div class="text-on-surface-variant font-medium text-sm tracking-wide uppercase">Monthly Production</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Why Choose Us -->
+<section class="bg-surface py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">The Assurance You Deserve</h2>
+<p class="text-on-surface-variant text-lg">We specialize in providing accessible, high-quality burial insurance for families nationwide.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">health_and_safety</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">No Medical Exam</h3>
+<p class="text-on-surface-variant leading-relaxed">Qualify for coverage based on a simple health questionnaire. No needles or waiting for results.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">calendar_today</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">Coverage from Day One</h3>
+<p class="text-on-surface-variant leading-relaxed">Many of our plans offer full benefits starting the moment your first payment is processed.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">payments</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">Low Monthly Premiums</h3>
+<p class="text-on-surface-variant leading-relaxed">Plans specifically designed to fit into a fixed budget, starting at just $9 per month.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">groups</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">Plans for Every Age</h3>
+<p class="text-on-surface-variant leading-relaxed">We provide specialized options for seniors aged 50 to 85, ensuring no one is left unprotected.</p>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">account_balance</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">13 Carrier Options</h3>
+<p class="text-on-surface-variant leading-relaxed">We shop the top carriers for you to ensure you get the absolute best rate for your situation.</p>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-low p-8 rounded-xl transition-all duration-300 hover:bg-surface-container-lowest hover:shadow-xl group">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">public</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-3">Licensed in 49 States</h3>
+<p class="text-on-surface-variant leading-relaxed">Providing nationwide reliability with local expertise in almost every corner of the country.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. How It Works -->
+<section class="bg-[#0A2240] py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Simple Three-Step Process</h2>
+<p class="text-white/60">Getting covered is easier than you think.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="text-center relative">
+<div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-8 relative z-10">1</div>
+<div class="hidden md:block absolute top-8 left-1/2 w-full h-px bg-white/10 -z-0"></div>
+<div class="mb-6 text-secondary">
+<span class="material-symbols-outlined" style="font-size: 48px;">call</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Call Us</h3>
+<p class="text-white/60">Speak with a friendly, licensed advisor who understands your needs.</p>
+</div>
+<div class="text-center relative">
+<div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-8 relative z-10">2</div>
+<div class="hidden md:block absolute top-8 left-1/2 w-full h-px bg-white/10 -z-0"></div>
+<div class="mb-6 text-secondary">
+<span class="material-symbols-outlined" style="font-size: 48px;">fact_check</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Choose a Plan</h3>
+<p class="text-white/60">Compare quotes from 13 top-rated carriers to find your perfect fit.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-8">3</div>
+<div class="mb-6 text-secondary">
+<span class="material-symbols-outlined" style="font-size: 48px;">verified_user</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">Get Covered</h3>
+<p class="text-white/60">Finalize your application in minutes and enjoy immediate peace of mind.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Carrier Partner Logos -->
+<section class="bg-surface-container-lowest py-20">
+<div class="max-w-7xl mx-auto px-8">
+<h4 class="text-center text-on-surface-variant font-bold text-sm tracking-[0.2em] uppercase mb-12">Our Trusted Carrier Partners</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+<div class="h-20 bg-surface-container border border-outline-variant/30 rounded-xl flex items-center justify-center font-bold text-primary">CARRIER LOGO</div>
+</div>
+</div>
+</section>
+<!-- 7. FAQ Section -->
+<section class="bg-surface py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col lg:flex-row gap-16">
+<div class="lg:w-[65%]">
+<h2 class="text-3xl md:text-4xl font-bold text-primary mb-8">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="group bg-surface-container-low rounded-xl overflow-hidden" open="">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-primary list-none">
+                                Do I need a medical exam to qualify?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                                No, most of our final expense plans require no medical exams or blood tests. You simply answer a few basic health questions on the application.
+                            </div>
+</details>
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-primary list-none">
+                                How soon does my coverage start?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                                Depending on the carrier and your health profile, many plans offer "Day One" coverage, meaning your full benefit is active immediately upon policy approval.
+                            </div>
+</details>
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-primary list-none">
+                                What exactly does "final expense" cover?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                                These policies are designed to cover funeral costs, medical bills, or any outstanding debts, ensuring your family isn't left with a financial burden.
+                            </div>
+</details>
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-primary list-none">
+                                How much does a typical plan cost?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                                Premiums start as low as $9/month. Your actual rate depends on your age, gender, and health status, but we always shop for the most competitive rate available.
+                            </div>
+</details>
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-primary list-none">
+                                Can I get coverage with pre-existing conditions?
+                                <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                                Yes. We work with carriers that specialize in high-risk cases, offering "guaranteed issue" plans for those with serious health concerns.
+                            </div>
+</details>
+</div>
+</div>
+<div class="lg:w-[35%]">
+<div class="bg-secondary p-10 rounded-2xl text-white sticky top-32">
+<span class="material-symbols-outlined text-4xl mb-6">support_agent</span>
+<h3 class="text-2xl font-bold mb-4">Still have questions?</h3>
+<p class="text-white/80 mb-10 leading-relaxed">Our licensed specialists are available now to provide personalized guidance and quotes.</p>
+<button class="w-full bg-white text-secondary hover:bg-white/90 font-bold py-4 rounded-xl transition-all duration-300 shadow-lg flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">call</span>
+                            Call (888) 000-0000
+                        </button>
+<p class="mt-6 text-center text-white/60 text-sm">No obligation. 100% Free Consultation.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Bottom CTA -->
+<section class="py-24 px-8">
+<div class="max-w-7xl mx-auto rounded-[2rem] bg-gradient-to-r from-[#0EA5C9] to-[#0284C7] p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<h2 class="text-4xl md:text-5xl font-bold mb-8 relative z-10">Ready to Protect Your Family?</h2>
+<p class="text-xl text-white/90 mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed">Join thousands of families who have secured their future with our specialized final expense plans.</p>
+<button class="bg-white text-secondary hover:scale-105 transform transition-all duration-300 px-10 py-5 rounded-full font-bold text-xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] flex items-center justify-center mx-auto gap-4 relative z-10">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">call</span>
+                📞 Call (888) 000-0000
+            </button>
+</div>
+</section>
+<!-- 9. Footer (Shared Component) -->
+<footer class="bg-[#0A1628] dark:bg-black w-full pt-16 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
+<div class="space-y-6">
+<span class="text-lg font-bold text-white">Life Insurance</span>
+<p class="text-white/60 text-sm leading-loose">Specializing in final expense and burial insurance solutions for families across America.</p>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">About Us</a></li>
+<li><a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">Insurance Plans</a></li>
+<li><a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">Request a Quote</a></li>
+<li><a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">Carrier Partners</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contact Info</h4>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-white/60 text-sm">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">call</span>
+                        (888) 000-0000
+                    </li>
+<li class="flex items-center gap-3 text-white/60 text-sm">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">mail</span>
+                        contact@lifeinsurance.com
+                    </li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Licensing Disclaimer</h4>
+<p class="text-white/60 text-xs leading-loose italic">
+                    Licensed in all 50 states. All policies are subject to underwriting. Terms and conditions apply based on carrier selection.
+                </p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-white/60 text-sm leading-loose">© 2024 Life Insurance. All rights reserved. Licensed in all 50 states.</p>
+<div class="flex gap-8">
+<a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-white/60 hover:text-[#00677F] transition-colors text-sm" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

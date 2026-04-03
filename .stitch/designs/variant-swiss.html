@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Life Insurance | Minimalism & Swiss Style</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          "brand-blue": "#1E40AF",
+          "brand-blue-hover": "#1D4ED8",
+          "text-primary": "#1A1A1A",
+          "text-secondary": "#404040",
+          "text-muted": "#9CA3AF",
+          "border-default": "#E5E7EB",
+          "bg-alt": "#F9FAFB",
+          "bg-page": "#FFFFFF",
+        },
+        fontFamily: {
+          "sans": ["Inter", "sans-serif"],
+        },
+        borderRadius: {
+          "DEFAULT": "0px",
+          "sm": "2px",
+          "md": "4px",
+          "lg": "4px",
+          "xl": "4px",
+          "2xl": "4px",
+          "full": "4px",
+        },
+        boxShadow: {
+          "card": "0 1px 3px rgba(0,0,0,0.08)",
+          "card-hover": "0 2px 8px rgba(0,0,0,0.12)",
+          "none": "none",
+        },
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; vertical-align: middle; }
+  body { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #1A1A1A; }
+  .nav-link { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(26,26,26,0.7); transition: color 150ms; }
+  .nav-link:hover, .nav-link.active { color: #1A1A1A; }
+  .btn-primary { background: #1E40AF; color: #fff; padding: 12px 28px; border-radius: 4px; font-size: 15px; font-weight: 600; transition: background 150ms; cursor: pointer; border: none; }
+  .btn-primary:hover { background: #1D4ED8; }
+  .btn-outline { border: 1.5px solid #1E40AF; color: #1E40AF; padding: 10px 22px; border-radius: 4px; font-size: 14px; font-weight: 600; background: transparent; cursor: pointer; transition: all 150ms; }
+  .btn-outline:hover { background: #1E40AF; color: #fff; }
+  .stat-divider { border-left: 1px solid #E5E7EB; }
+  details summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(180deg); }
+  .chevron { transition: transform 200ms; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-white border-b border-[#E5E7EB]">
+  <div class="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-[68px]">
+    <span class="font-bold text-xl tracking-tight text-[#1A1A1A]">Life Insurance</span>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-link">Plans</a>
+      <a href="#" class="nav-link">FAQ</a>
+      <a href="#" class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="tel:8880000000" class="hidden lg:flex items-center gap-1.5 text-sm font-medium text-[#1E40AF]">
+        <span class="material-symbols-outlined text-base">call</span>(888) 000-0000
+      </a>
+      <button class="btn-outline text-sm">Get a Quote</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-[140px] pb-24 bg-white border-b border-[#E5E7EB]">
+  <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-16 items-center">
+    <div>
+      <div class="inline-flex items-center px-3 py-1 border border-[#1E40AF] text-[#1E40AF] text-xs font-semibold tracking-wide uppercase mb-8">
+        Average funeral costs $8,300 — act now
+      </div>
+      <h1 class="text-[56px] font-[800] text-[#1A1A1A] leading-[1.0] tracking-[-0.02em] mb-6">
+        Protect Your<br/>Family's<br/>Future
+      </h1>
+      <p class="text-[18px] text-[#404040] leading-[1.6] mb-8 max-w-[480px]">
+        Final expense coverage from $9/month. No medical exam required. Approved the same day you apply.
+      </p>
+      <div class="flex items-center gap-4">
+        <button class="btn-primary flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">call</span>
+          Call Now — (888) 000-0000
+        </button>
+        <a href="#" class="text-sm text-[#1E40AF] font-medium underline underline-offset-2">Or request a callback →</a>
+      </div>
+    </div>
+    <div>
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBwi_lI9b2hgLANJedzqtgh7YBY57twQ6nlrsTuNOOxBbIb3hH6I6tG17bloxNPU-pakkqNEASNP04qTpVhUo3xO8-UluH17xqRvpCSnLCrr2PCKv8nLj63c0lpGQtRrr93paCY4KZM8DeVTP53C_ElXjlwsSCLL8S6Zsv5kRkpmQSAjhIySdtPJEnD-JWAsQ3ANc2f_ckYd_zMxSd4V-bRukdH7uSOyPlS-UdA3sTq8ESPF67DBuIcYlAjDTv5UbnJfN86ZBBPM"
+           alt="Senior couple" class="w-full h-[420px] object-cover"/>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-white border-b border-[#E5E7EB] py-14">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4">
+      <div class="text-center py-4 pr-8">
+        <div class="text-[52px] font-[700] text-[#1A1A1A] leading-none mb-2">130+</div>
+        <div class="text-[11px] font-[600] uppercase tracking-[0.12em] text-[#9CA3AF]">Licensed Agents</div>
+      </div>
+      <div class="text-center py-4 px-8 stat-divider">
+        <div class="text-[52px] font-[700] text-[#1A1A1A] leading-none mb-2">13</div>
+        <div class="text-[11px] font-[600] uppercase tracking-[0.12em] text-[#9CA3AF]">Carrier Partners</div>
+      </div>
+      <div class="text-center py-4 px-8 stat-divider">
+        <div class="text-[52px] font-[700] text-[#1A1A1A] leading-none mb-2">49</div>
+        <div class="text-[11px] font-[600] uppercase tracking-[0.12em] text-[#9CA3AF]">States Licensed</div>
+      </div>
+      <div class="text-center py-4 pl-8 stat-divider">
+        <div class="text-[52px] font-[700] text-[#1A1A1A] leading-none mb-2">$1M+</div>
+        <div class="text-[11px] font-[600] uppercase tracking-[0.12em] text-[#9CA3AF]">Monthly Production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="bg-white py-24">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 class="text-[36px] font-[700] text-[#1A1A1A] mb-14 tracking-[-0.01em]">Why Families Trust Us</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards -->
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">health_and_safety</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">No Medical Exam</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Qualify based on a simple questionnaire. No needles, no waiting.</p>
+      </div>
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">calendar_today</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Coverage from Day One</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Full benefits active the moment your first payment is processed.</p>
+      </div>
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">payments</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Low Monthly Premiums</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Plans designed for fixed budgets, starting at $9/month.</p>
+      </div>
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">groups</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Plans for Every Age</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Coverage options for seniors aged 50 to 85.</p>
+      </div>
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">account_balance</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">13 Carrier Options</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">We shop 13 top carriers to find your best rate.</p>
+      </div>
+      <div class="border border-[#E5E7EB] border-t-[2px] border-t-[#1E40AF] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)] hover:shadow-[0_2px_8px_rgba(0,0,0,0.10)] transition-shadow">
+        <span class="material-symbols-outlined text-[#1E40AF] mb-4 block" style="font-size:24px;font-variation-settings:'FILL' 0,'wght' 300">public</span>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Licensed in 49 States</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Nationwide reliability with local agent expertise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="bg-[#F9FAFB] py-24 border-y border-[#E5E7EB]">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <h2 class="text-[36px] font-[700] text-[#1A1A1A] mb-3 tracking-[-0.01em]">Get Covered in 3 Simple Steps</h2>
+    <p class="text-[16px] text-[#404040] mb-16">Most families are covered in a single phone call.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+      <div class="hidden md:block absolute top-5 left-[16.66%] right-[16.66%] h-px bg-[#E5E7EB]"></div>
+      <div>
+        <div class="w-10 h-10 border-2 border-[#1E40AF] flex items-center justify-center text-[#1E40AF] font-[700] text-[16px] mb-6 relative bg-white z-10">1</div>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Call Us</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Speak with a licensed advisor in minutes. No pressure, no sales pitch.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-[#1E40AF] flex items-center justify-center text-[#1E40AF] font-[700] text-[16px] mb-6 relative bg-[#F9FAFB] z-10">2</div>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Choose a Plan</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Compare quotes from 13 carriers to find your best fit.</p>
+      </div>
+      <div>
+        <div class="w-10 h-10 border-2 border-[#1E40AF] flex items-center justify-center text-[#1E40AF] font-[700] text-[16px] mb-6 relative bg-[#F9FAFB] z-10">3</div>
+        <h3 class="text-[17px] font-[600] text-[#1A1A1A] mb-2">Get Covered</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6]">Coverage starts the same day you apply.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIER LOGOS -->
+<section class="bg-white py-16 border-b border-[#E5E7EB]">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <p class="text-[11px] font-[600] uppercase tracking-[0.16em] text-[#9CA3AF] mb-10 text-center">Carrier Partners</p>
+    <div class="grid grid-cols-4 lg:grid-cols-8 gap-4">
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+      <div class="h-14 border border-[#E5E7EB] flex items-center justify-center text-[11px] font-[600] text-[#9CA3AF] tracking-wide">CARRIER</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-white py-24">
+  <div class="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row gap-16">
+    <div class="lg:w-[65%]">
+      <h2 class="text-[36px] font-[700] text-[#1A1A1A] mb-10 tracking-[-0.01em]">Common Questions</h2>
+      <div class="divide-y divide-[#E5E7EB]">
+        <details class="group py-5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-[600] text-[15px] text-[#1A1A1A]">
+            Is a medical exam required to apply?
+            <span class="material-symbols-outlined chevron text-[#9CA3AF] text-[20px]">expand_more</span>
+          </summary>
+          <p class="mt-3 text-[14px] text-[#404040] leading-[1.7]">No. Most plans require only a simple health questionnaire. No blood tests or medical examinations.</p>
+        </details>
+        <details class="group py-5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-[600] text-[15px] text-[#1A1A1A]">
+            How quickly does coverage start?
+            <span class="material-symbols-outlined chevron text-[#9CA3AF] text-[20px]">expand_more</span>
+          </summary>
+          <p class="mt-3 text-[14px] text-[#404040] leading-[1.7]">Many plans offer day-one coverage upon approval. Your benefits activate immediately after your first payment.</p>
+        </details>
+        <details class="group py-5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-[600] text-[15px] text-[#1A1A1A]">
+            What does final expense insurance cover?
+            <span class="material-symbols-outlined chevron text-[#9CA3AF] text-[20px]">expand_more</span>
+          </summary>
+          <p class="mt-3 text-[14px] text-[#404040] leading-[1.7]">Funeral costs, medical bills, and outstanding debts — ensuring your family is not left with a financial burden.</p>
+        </details>
+        <details class="group py-5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-[600] text-[15px] text-[#1A1A1A]">
+            How much does a typical plan cost?
+            <span class="material-symbols-outlined chevron text-[#9CA3AF] text-[20px]">expand_more</span>
+          </summary>
+          <p class="mt-3 text-[14px] text-[#404040] leading-[1.7]">Plans start as low as $9/month. Your rate depends on age, gender, and health — we always find the most competitive option.</p>
+        </details>
+        <details class="group py-5">
+          <summary class="flex justify-between items-center cursor-pointer list-none font-[600] text-[15px] text-[#1A1A1A]">
+            Can I apply with pre-existing conditions?
+            <span class="material-symbols-outlined chevron text-[#9CA3AF] text-[20px]">expand_more</span>
+          </summary>
+          <p class="mt-3 text-[14px] text-[#404040] leading-[1.7]">Yes. We work with carriers that specialize in high-risk cases, including guaranteed issue plans.</p>
+        </details>
+      </div>
+    </div>
+    <div class="lg:w-[35%]">
+      <div class="border border-[#E5E7EB] p-8 sticky top-24">
+        <h3 class="text-[20px] font-[700] text-[#1A1A1A] mb-3">Still have questions?</h3>
+        <p class="text-[14px] text-[#404040] leading-[1.6] mb-6">Our licensed agents are standing by to provide personalized guidance.</p>
+        <button class="btn-primary w-full flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">call</span>
+          Call (888) 000-0000
+        </button>
+        <p class="text-[12px] text-[#9CA3AF] text-center mt-4">No obligation. Free consultation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bg-[#1A1A1A] py-24 px-6">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <h2 class="text-[48px] font-[700] text-white leading-[1.1] tracking-[-0.02em] mb-5">Ready to Protect Your Family?</h2>
+    <p class="text-[17px] text-white/70 mb-10">Talk to a licensed agent today. No pressure, no hidden fees, no surprises.</p>
+    <button class="bg-white text-[#1A1A1A] px-10 py-4 font-[700] text-[16px] hover:bg-white/90 transition-colors flex items-center gap-3 mx-auto">
+      <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">call</span>
+      Call (888) 000-0000
+    </button>
+    <p class="text-[12px] text-white/40 mt-5 tracking-wide uppercase">Mon–Fri 9AM–6PM EST · Licensed in 49 States</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#F9FAFB] border-t border-[#E5E7EB] pt-16 pb-8">
+  <div class="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <div>
+      <span class="font-[700] text-[17px] text-[#1A1A1A] block mb-3">Life Insurance</span>
+      <p class="text-[13px] text-[#404040] leading-[1.7]">Specializing in final expense and burial insurance for American families.</p>
+    </div>
+    <div>
+      <h4 class="text-[12px] font-[700] uppercase tracking-[0.08em] text-[#1A1A1A] mb-4">Quick Links</h4>
+      <ul class="space-y-2">
+        <li><a href="#" class="text-[13px] text-[#404040] hover:text-[#1E40AF] transition-colors">About Us</a></li>
+        <li><a href="#" class="text-[13px] text-[#404040] hover:text-[#1E40AF] transition-colors">Insurance Plans</a></li>
+        <li><a href="#" class="text-[13px] text-[#404040] hover:text-[#1E40AF] transition-colors">Request a Quote</a></li>
+        <li><a href="#" class="text-[13px] text-[#404040] hover:text-[#1E40AF] transition-colors">Carrier Partners</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-[12px] font-[700] uppercase tracking-[0.08em] text-[#1A1A1A] mb-4">Contact</h4>
+      <ul class="space-y-2">
+        <li class="text-[13px] text-[#404040]">(888) 000-0000</li>
+        <li class="text-[13px] text-[#404040]">contact@lifeinsurance.com</li>
+        <li class="text-[13px] text-[#404040]">Mon–Fri, 9AM–6PM EST</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="text-[12px] font-[700] uppercase tracking-[0.08em] text-[#1A1A1A] mb-4">Licensed & Regulated</h4>
+      <p class="text-[12px] text-[#404040] italic leading-[1.7]">Licensed insurance agency. Coverage subject to underwriting. Terms and conditions apply by carrier.</p>
+    </div>
+  </div>
+  <div class="max-w-[1200px] mx-auto px-6 pt-6 border-t border-[#E5E7EB] flex flex-col md:flex-row justify-between items-center gap-3">
+    <p class="text-[12px] text-[#9CA3AF]">© 2025 Life Insurance. All rights reserved.</p>
+    <div class="flex gap-6">
+      <a href="#" class="text-[12px] text-[#9CA3AF] hover:text-[#1E40AF] transition-colors">Privacy Policy</a>
+      <a href="#" class="text-[12px] text-[#9CA3AF] hover:text-[#1E40AF] transition-colors">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
