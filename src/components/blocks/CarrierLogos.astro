@@ -1,0 +1,41 @@
+---
+// src/components/blocks/CarrierLogos.astro
+
+const carriers = [
+  'Mutual of Omaha', 'Transamerica', 'Foresters',
+  'AIG', 'Baltimore Life', 'Gerber Life',
+  'Aetna', 'Corebridge',
+];
+---
+
+<!-- Wave into cream -->
+<div class="bg-forest-dark overflow-hidden leading-[0]">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,25 C360,0 1080,40 1440,15 L1440,40 L0,40 Z" fill="#F5F0E8" />
+  </svg>
+</div>
+
+<section class="bg-cream py-16" aria-label="Carrier partners">
+  <div class="max-w-[1200px] mx-auto px-6">
+    <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-forest text-center mb-3">
+      Our Trusted Partners
+    </p>
+    <h3 class="font-display font-bold text-[30px] text-brown-dark text-center mb-12">
+      Backed by America's Most Trusted Insurers
+    </h3>
+
+    <div
+      id="logos-grid"
+      class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 opacity-60 hover:opacity-100 transition-opacity duration-500"
+    >
+      {carriers.map((name) => (
+        <div
+          class="h-16 bg-white rounded-2xl flex items-center justify-center px-2 text-[11px] font-semibold text-brown-light text-center leading-tight"
+          style="box-shadow:0 4px 16px rgba(93,70,40,0.09)"
+        >
+          {name}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
