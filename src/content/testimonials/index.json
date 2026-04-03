@@ -12,7 +12,7 @@
     "id": "james-t",
     "name": "James Thibodaux",
     "location": "Baton Rouge, LA",
-    "rating": 5,
+    "rating": 4,
     "text": "My agent took the time to compare six carriers side by side and found me a whole life policy at a rate I could actually afford on a fixed income. Coverage started the same week I applied — no waiting period. I've already recommended this service to two of my siblings.",
     "plan_type": "Whole Life",
     "age": 72
@@ -39,7 +39,7 @@
     "id": "helen-w",
     "name": "Helen Winters",
     "location": "Phoenix, AZ",
-    "rating": 5,
+    "rating": 4,
     "text": "The whole process was so simple — a short phone call, a few questions, and my final expense policy was active the same day. No doctor visits, no blood draws, nothing complicated. My agent explained every detail of the policy so I understood exactly what my family would receive.",
     "plan_type": "Final Expense",
     "age": 75

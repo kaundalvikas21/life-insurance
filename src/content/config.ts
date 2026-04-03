@@ -16,10 +16,10 @@ const testimonials = defineCollection({
     id: z.string(),
     name: z.string(),
     location: z.string(),
-    rating: z.number(),
+    rating: z.number().int().min(1).max(5),
     text: z.string(),
     plan_type: z.string(),
-    age: z.number(),
+    age: z.number().int().min(18).max(120),
   }),
 });
 
@@ -30,8 +30,8 @@ const team = defineCollection({
     name: z.string(),
     role: z.string(),
     bio: z.string(),
-    states: z.number(),
-    years_exp: z.number(),
+    states: z.number().int().min(1).max(51),
+    years_exp: z.number().int().min(0).max(60),
   }),
 });
 
