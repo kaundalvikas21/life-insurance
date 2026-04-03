@@ -17,12 +17,25 @@ export default function FAQAccordion({ faqs }: Props) {
   const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (i: number) => {
-    const isOpen = openIndex === i;
-    const answerEl = answerRefs.current[i];
+    const wasOpen = openIndex === i;
 
+    // Close previously open item if different
+    if (openIndex !== null && openIndex !== i) {
+      const prevEl = answerRefs.current[openIndex];
+      if (prevEl) {
+        gsap.to(prevEl, {
+          height: 0,
+          duration: 0.3,
+          ease: 'power2.inOut',
+        });
+      }
+    }
+
+    // Handle current item
+    const answerEl = answerRefs.current[i];
     if (answerEl) {
-      if (isOpen) {
-        // Closing: animate to height 0
+      if (wasOpen) {
+        // Close current
         gsap.to(answerEl, {
           height: 0,
           duration: 0.4,
@@ -30,7 +43,7 @@ export default function FAQAccordion({ faqs }: Props) {
           onComplete: () => setOpenIndex(null),
         });
       } else {
-        // Opening: animate to natural height
+        // Open current
         const naturalHeight = answerEl.scrollHeight;
         answerEl.style.height = '0px';
         setOpenIndex(i);
@@ -38,9 +51,7 @@ export default function FAQAccordion({ faqs }: Props) {
           height: naturalHeight,
           duration: 0.4,
           ease: 'power2.inOut',
-          onComplete: () => {
-            answerEl.style.height = 'auto';
-          },
+          onComplete: () => { answerEl.style.height = 'auto'; },
         });
       }
     }
