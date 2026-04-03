@@ -1,5 +1,5 @@
 ---
-// src/components/blocks/CarrierLogos.astro
+import CarrierCarousel from '../interactive/CarrierCarousel';
 
 const carriers = [
   'Mutual of Omaha', 'Transamerica', 'Foresters',
@@ -24,18 +24,8 @@ const carriers = [
       Backed by America's Most Trusted Insurers
     </h3>
 
-    <div
-      id="logos-grid"
-      class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 opacity-60 hover:opacity-100 transition-opacity duration-500"
-    >
-      {carriers.map((name) => (
-        <div
-          class="h-16 bg-white rounded-2xl flex items-center justify-center px-2 text-[11px] font-semibold text-brown-light text-center leading-tight"
-          style="box-shadow:0 4px 16px rgba(93,70,40,0.09)"
-        >
-          {name}
-        </div>
-      ))}
+    <div id="logos-carousel">
+      <CarrierCarousel client:visible carriers={carriers} />
     </div>
   </div>
 </section>
@@ -47,14 +37,14 @@ const carriers = [
   document.addEventListener('astro:page-load', () => {
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.from('#logos-grid > *', {
+      gsap.from('#logos-carousel .embla__slide', {
         opacity: 0,
-        y: 20,
-        duration: 0.5,
+        x: 20,
+        duration: 0.6,
         stagger: 0.08,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: '#logos-grid',
+          trigger: '#logos-carousel',
           start: 'top 85%',
           once: true,
         },
