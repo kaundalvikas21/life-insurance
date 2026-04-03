@@ -223,3 +223,12 @@ src/utils/format.test.ts
 ### 10. Verification Before Completion
 - **ALWAYS** use `superpowers:verification-before-completion` skill before claiming any task is done
 - Run verification commands and confirm output — evidence before assertions
+
+### 11. Commit Workflow (MANDATORY)
+- **NEVER commit without explicit user permission**
+- After completing any task/feature:
+  1. Run lint/type check (`npm run build`)
+  2. Show user summary of changes
+  3. Ask: "Ready to commit?"
+  4. Wait for user's explicit approval
+  5. Only then run `git commit` and `git push`
