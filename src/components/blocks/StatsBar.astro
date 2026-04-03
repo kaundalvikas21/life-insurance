@@ -18,14 +18,24 @@ const stats = [
 
 <section class="bg-white py-16" aria-label="Company statistics">
   <div style="max-width: var(--container-max)" class="mx-auto px-6">
+    <!-- Heading and Description -->
+    <div class="text-center mb-12">
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark mb-4">
+        Trusted by Thousands of Families
+      </h2>
+      <p class="text-[17px] text-brown-mid leading-relaxed max-w-[540px] mx-auto">
+        We've helped families across America protect their futures with affordable coverage.
+      </p>
+    </div>
+
     <div id="stats-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-6">
       {stats.map(({ number, label }) => (
         <div class="text-center p-6 rounded-2xl bg-sage">
           <div
-            class="font-display font-bold text-[48px] text-forest leading-none mb-2"
-            data-stat={number}
+            class="stat-number font-display font-bold text-[48px] text-forest leading-none mb-2"
+            data-target={number}
           >
-            {number}
+            0
           </div>
           <div class="text-[12px] font-semibold uppercase tracking-[0.1em] text-brown-light">
             {label}
@@ -43,6 +53,37 @@ const stats = [
   document.addEventListener('astro:page-load', () => {
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Counter animation
+      const statNumbers = document.querySelectorAll('.stat-number');
+
+      statNumbers.forEach((el) => {
+        const targetText = el.dataset.target || '0';
+
+        // Parse the number and suffix
+        const match = targetText.match(/^([\d,]+)(\D*)$/);
+        if (!match) return;
+
+        const targetNum = parseFloat(match[1].replace(/,/g, ''));
+        const suffix = match[2] || '';
+        const counter = { val: 0 };
+
+        gsap.to(counter, {
+          val: targetNum,
+          duration: 2,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+          onUpdate: function() {
+            const formatted = Math.round(counter.val).toLocaleString();
+            el.textContent = formatted + suffix;
+          }
+        });
+      });
+
+      // Entrance animation for stat cards
       gsap.from('#stats-grid > *', {
         opacity: 0,
         y: 24,
