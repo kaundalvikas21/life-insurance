@@ -57,14 +57,15 @@ const stats = [
       const statNumbers = document.querySelectorAll('.stat-number');
 
       statNumbers.forEach((el) => {
-        const targetText = el.dataset.target || '0';
+        const targetText = (el as HTMLElement).dataset.target || '0';
 
-        // Parse the number and suffix
-        const match = targetText.match(/^([\d,]+)(\D*)$/);
+        // Parse prefix, number, and suffix (handles "$1M+", "130+", "49", etc.)
+        const match = targetText.match(/^([^\d]*)([\d,]+)(\D*)$/);
         if (!match) return;
 
-        const targetNum = parseFloat(match[1].replace(/,/g, ''));
-        const suffix = match[2] || '';
+        const prefix = match[1] || '';  // "$" or ""
+        const targetNum = parseFloat(match[2].replace(/,/g, ''));  // the number
+        const suffix = match[3] || '';  // "M+" or "+" or ""
         const counter = { val: 0 };
 
         gsap.to(counter, {
@@ -78,7 +79,7 @@ const stats = [
           },
           onUpdate: function() {
             const formatted = Math.round(counter.val).toLocaleString();
-            el.textContent = formatted + suffix;
+            el.textContent = prefix + formatted + suffix;
           }
         });
       });

@@ -1,10 +1,40 @@
 ---
 import CarrierCarousel from '../interactive/CarrierCarousel';
 
-const carriers = [
-  'Mutual of Omaha', 'Transamerica', 'Foresters',
-  'AIG', 'Baltimore Life', 'Gerber Life',
-  'Aetna', 'Corebridge',
+// Import carrier logos
+import mutualOfOmaha from '../../assets/images/mutual-of-omaha.png';
+import transamerica from '../../assets/images/transamerica.png';
+import foresters from '../../assets/images/foresters.png';
+import aig from '../../assets/images/AIG.png';
+import corebridge from '../../assets/images/corebridge.png';
+import aflac from '../../assets/images/aflac.jpg';
+import ahl from '../../assets/images/AHL-logo.png';
+import ethos from '../../assets/images/Ethos.png';
+import americo from '../../assets/images/americo.png';
+import citizensCica from '../../assets/images/citizens-cica.png';
+import libertyBankers from '../../assets/images/liberty-bankers.png';
+import royalNeighbors from '../../assets/images/royalneig.png';
+import seniorLife from '../../assets/images/senior-life.jpg';
+
+interface Carrier {
+  name: string;
+  logo: ImageMetadata;
+}
+
+const carriers: Carrier[] = [
+  { name: 'Mutual of Omaha', logo: mutualOfOmaha },
+  { name: 'Transamerica', logo: transamerica },
+  { name: 'Foresters', logo: foresters },
+  { name: 'AIG', logo: aig },
+  { name: 'Corebridge', logo: corebridge },
+  { name: 'Aflac', logo: aflac },
+  { name: 'AHL', logo: ahl },
+  { name: 'Ethos', logo: ethos },
+  { name: 'Americo', logo: americo },
+  { name: 'Citizens CICA', logo: citizensCica },
+  { name: 'Liberty Bankers', logo: libertyBankers },
+  { name: 'Royal Neighbors', logo: royalNeighbors },
+  { name: 'Senior Life', logo: seniorLife },
 ];
 ---
 
@@ -26,6 +56,28 @@ const carriers = [
 
     <div id="logos-carousel">
       <CarrierCarousel client:visible carriers={carriers} />
+    </div>
+
+    <!-- Trust badges -->
+    <div class="flex flex-wrap justify-center gap-4 mt-12">
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-pill" style="box-shadow: 0 2px 8px rgba(93,70,40,0.08)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+          <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+        </svg>
+        <span class="text-[13px] font-semibold text-brown-dark">Licensed Agents 130+</span>
+      </div>
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-pill" style="box-shadow: 0 2px 8px rgba(93,70,40,0.08)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        <span class="text-[13px] font-semibold text-brown-dark">Licensed in 49 States</span>
+      </div>
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-pill" style="box-shadow: 0 2px 8px rgba(93,70,40,0.08)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+          <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+        </svg>
+        <span class="text-[13px] font-semibold text-brown-dark">Partnered with 13 Carriers</span>
+      </div>
     </div>
   </div>
 </section>
