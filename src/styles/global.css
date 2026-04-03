@@ -30,6 +30,9 @@
   --radius-lg:   16px;
   --radius-md:   12px;
   --radius-sm:   8px;
+
+  /* ── Layout ── */
+  --container-max: 1280px;
 }
 
 /* ── Base resets ── */

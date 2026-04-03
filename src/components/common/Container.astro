@@ -5,6 +5,6 @@ interface Props {
 }
 const { class: className = '' } = Astro.props;
 ---
-<div class={`max-w-[1280px] mx-auto px-6 ${className}`}>
+<div style={`max-width: var(--container-max)`} class={`mx-auto px-6 ${className}`}>
   <slot />
 </div>
