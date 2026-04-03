@@ -1,5 +1,6 @@
 // src/components/interactive/MobileMenu.tsx
 import { useState } from 'react';
+import { Icon } from '@iconify/react';
 
 interface NavLink {
   label: string;
@@ -41,9 +42,7 @@ export default function MobileMenu({ links, phone }: Props) {
               onClick={() => setOpen(false)}
               className="text-white p-2"
             >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
+              <Icon icon="heroicons:x-mark" width="24" height="24" aria-hidden="true" />
             </button>
           </div>
 

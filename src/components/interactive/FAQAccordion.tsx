@@ -1,5 +1,6 @@
 // src/components/interactive/FAQAccordion.tsx
 import { useState } from 'react';
+import { Icon } from '@iconify/react';
 
 interface FAQ {
   question: string;
@@ -38,19 +39,14 @@ export default function FAQAccordion({ faqs }: Props) {
                   className="flex justify-between items-center w-full p-6 text-left font-semibold text-[16px] text-brown-dark"
                 >
                   {faq.question}
-                  <svg
+                  <Icon
+                    icon="heroicons:chevron-down"
                     width="22"
                     height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#2D6A4F"
-                    strokeWidth="2"
+                    style={{ color: '#2D6A4F', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                     className="shrink-0 ml-4 transition-transform duration-200"
-                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
                     aria-hidden="true"
-                  >
-                    <path d="M6 9l6 6 6-6" />
-                  </svg>
+                  />
                 </button>
                 {isOpen && (
                   <div
@@ -73,9 +69,7 @@ export default function FAQAccordion({ faqs }: Props) {
           className="bg-forest p-10 rounded-3xl sticky top-24"
           style={{ boxShadow: '0 16px 48px rgba(93,70,40,0.16)' }}
         >
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="#D97706" className="mb-5" aria-hidden="true">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-          </svg>
+          <Icon icon="heroicons:chat-bubble-left-ellipsis" width="44" height="44" style={{ color: '#D97706' }} className="mb-5" aria-hidden="true" />
           <h3 className="font-display font-bold text-[28px] text-white mb-4">
             Still have questions?
           </h3>
@@ -86,9 +80,7 @@ export default function FAQAccordion({ faqs }: Props) {
             href="tel:8880000000"
             className="flex items-center justify-center gap-3 w-full bg-amber hover:bg-amber-dark text-white font-bold text-[17px] py-4 rounded-pill transition-colors"
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-            </svg>
+            <Icon icon="heroicons:phone" width="20" height="20" aria-hidden="true" />
             Call (888) 000-0000
           </a>
           <p className="text-[13px] text-white/60 text-center mt-5">

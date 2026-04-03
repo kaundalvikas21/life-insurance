@@ -1,34 +1,34 @@
 ---
-// src/components/blocks/WhyChooseUs.astro
+import { Icon } from '@iconify/react';
 
 const benefits = [
   {
-    icon: `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14l-4-4 1.41-1.41L10 13.17l6.59-6.59L18 8l-8 8z"/>`,
+    icon: 'heroicons:check-circle',
     title: 'No Medical Exam',
     body:  'Qualify based on a simple questionnaire. No needles, no waiting for results.',
   },
   {
-    icon: `<path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z"/>`,
+    icon: 'heroicons:calendar-days',
     title: 'Coverage from Day One',
     body:  'Full benefits active the moment your first payment is processed.',
   },
   {
-    icon: `<path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>`,
+    icon: 'heroicons:currency-dollar',
     title: 'Low Monthly Premiums',
     body:  'Plans designed for fixed budgets, starting at just $9/month.',
   },
   {
-    icon: `<path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>`,
+    icon: 'heroicons:user-group',
     title: 'Plans for Every Age',
     body:  'Coverage options for seniors aged 50 to 85 — no one left unprotected.',
   },
   {
-    icon: `<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93V18h-2v1.93C7.06 19.44 4.56 16.94 4.07 14H6v-2H4.07C4.56 9.06 7.06 6.56 10 6.07V8h2V6.07c2.94.49 5.44 2.99 5.93 5.93H16v2h1.93c-.49 2.94-2.99 5.44-5.93 5.93z"/>`,
+    icon: 'heroicons:cog-6-tooth',
     title: '13 Carrier Options',
     body:  'We shop 13 top carriers to find your best rate and coverage.',
   },
   {
-    icon: `<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>`,
+    icon: 'heroicons:map-pin',
     title: 'Licensed in 49 States',
     body:  'Nationwide reliability with licensed agents serving American families.',
   },
@@ -56,9 +56,7 @@ const benefits = [
         <div class="bg-white p-9 rounded-[20px] hover:-translate-y-1 transition-transform duration-300 group"
              style="box-shadow:0 8px 32px rgba(93,70,40,0.12)">
           <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6 group-hover:bg-forest/10 transition-colors">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
-              <Fragment set:html={icon} />
-            </svg>
+            <Icon icon={icon} width="28" height="28" style="color: #2D6A4F" aria-hidden="true" />
           </div>
           <h3 class="font-display font-bold text-[22px] text-brown-dark mb-3">{title}</h3>
           <p class="text-[15px] text-brown-mid leading-[1.8]">{body}</p>
