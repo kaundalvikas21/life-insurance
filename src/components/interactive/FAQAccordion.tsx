@@ -1,6 +1,7 @@
 // src/components/interactive/FAQAccordion.tsx
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Icon } from '@iconify/react';
+import gsap from 'gsap';
 
 interface FAQ {
   question: string;
@@ -13,8 +14,37 @@ interface Props {
 
 export default function FAQAccordion({ faqs }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+  const toggle = (i: number) => {
+    const isOpen = openIndex === i;
+    const answerEl = answerRefs.current[i];
+
+    if (answerEl) {
+      if (isOpen) {
+        // Closing: animate to height 0
+        gsap.to(answerEl, {
+          height: 0,
+          duration: 0.4,
+          ease: 'power2.inOut',
+          onComplete: () => setOpenIndex(null),
+        });
+      } else {
+        // Opening: animate to natural height
+        const naturalHeight = answerEl.scrollHeight;
+        answerEl.style.height = '0px';
+        setOpenIndex(i);
+        gsap.to(answerEl, {
+          height: naturalHeight,
+          duration: 0.4,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            answerEl.style.height = 'auto';
+          },
+        });
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-16">
@@ -48,15 +78,16 @@ export default function FAQAccordion({ faqs }: Props) {
                     aria-hidden="true"
                   />
                 </button>
-                {isOpen && (
-                  <div
-                    id={`faq-answer-${i}`}
-                    className="px-6 pb-6 text-[15px] text-brown-mid leading-[1.85]"
-                    role="region"
-                  >
-                    {faq.answer}
-                  </div>
-                )}
+                <div
+                  ref={(el) => { answerRefs.current[i] = el; }}
+                  id={`faq-answer-${i}`}
+                  className="px-6 text-[15px] text-brown-mid leading-[1.85] overflow-hidden"
+                  style={{ height: 0 }}
+                  role="region"
+                  aria-hidden={!isOpen}
+                >
+                  <div className="pb-6">{faq.answer}</div>
+                </div>
               </div>
             );
           })}
