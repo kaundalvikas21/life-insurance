@@ -25,6 +25,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# git worktrees
+.worktrees/
+
 # Claude and Agents
 .claude/
 .agents/
