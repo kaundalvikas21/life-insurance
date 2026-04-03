@@ -1,0 +1,254 @@
+---
+// src/pages/about.astro
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/blocks/PageHero.astro';
+import TrustBar from '../components/blocks/TrustBar.astro';
+import StatsBar from '../components/blocks/StatsBar.astro';
+import TestimonialsSection from '../components/blocks/TestimonialsSection.astro';
+import BottomCTA from '../components/blocks/BottomCTA.astro';
+import { getCollection } from 'astro:content';
+
+const teamEntries = await getCollection('team');
+
+function getInitials(name: string): string {
+  const parts = name.trim().split(' ');
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  }
+  return parts[0].slice(0, 2).toUpperCase();
+}
+---
+
+<Layout
+  title="About Us — Patriot American Benefits"
+  description="Learn about Patriot American Benefits. We protect American families with affordable final expense coverage. Licensed agents in 49 states since 2021."
+>
+  <PageHero
+    title="About Patriot American Benefits"
+    subtitle="Protecting American families with affordable final expense coverage since 2021. Licensed agents in 49 states."
+    breadcrumb="About Us"
+  />
+
+  <TrustBar />
+
+  <!-- Mission & Vision Section -->
+  <section class="bg-cream py-24">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Why We Exist
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-16">
+        Our Mission
+      </h2>
+
+      <div id="mission-vision-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <!-- Mission -->
+        <div class="border-l-4 border-forest pl-8">
+          <h3 class="font-display font-bold text-[24px] text-forest mb-5">Our Mission</h3>
+          <p class="text-[17px] text-brown-mid leading-[1.85]">
+            To make life insurance accessible and affordable for every American family. We believe no one should leave their loved ones with the burden of funeral costs and final expenses.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="border-l-4 border-amber pl-8">
+          <h3 class="font-display font-bold text-[24px] text-amber-dark mb-5">Our Vision</h3>
+          <p class="text-[17px] text-brown-mid leading-[1.85]">
+            A future where every American can protect their family's financial security — regardless of age, health, or income. We achieve this by shopping 13+ carriers to find the best rate for every client.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <!-- Wave divider: cream → sage -->
+  <div class="bg-cream overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,10 C480,40 960,0 1440,25 L1440,40 L0,40 Z" fill="#EBF5EE" />
+    </svg>
+  </div>
+
+  <section class="bg-sage py-24">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Our Values
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
+        What We Stand For
+      </h2>
+
+      <div id="values-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Integrity First -->
+        <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-3">Integrity First</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">We never push products that don't fit. Every recommendation is made with your best interests in mind.</p>
+        </div>
+
+        <!-- True Accessibility -->
+        <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+              <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-3">True Accessibility</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">Final expense insurance should be available to everyone, including those with pre-existing conditions.</p>
+        </div>
+
+        <!-- Deep Expertise -->
+        <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-3">Deep Expertise</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">Our agents are licensed, trained, and committed to ongoing education to serve you better.</p>
+        </div>
+
+        <!-- Genuine Respect -->
+        <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-3">Genuine Respect</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">We treat every client with the dignity and patience they deserve when making such an important decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+
+  <!-- Team Section -->
+  <section class="bg-cream py-24 border-t border-[#D9D0C2]">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Our Team
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
+        Meet Your Licensed Advisors
+      </h2>
+
+      <div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {teamEntries.map((member) => (
+          <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+            <!-- Avatar with initials -->
+            <div class="w-20 h-20 bg-forest/10 rounded-full flex items-center justify-center mx-auto">
+              <span class="text-forest font-display font-bold text-[24px]">
+                {getInitials(member.data.name)}
+              </span>
+            </div>
+
+            <!-- Name -->
+            <h3 class="font-display font-bold text-[18px] text-brown-dark mt-4 text-center">
+              {member.data.name}
+            </h3>
+
+            <!-- Role -->
+            <p class="text-[13px] text-forest font-semibold uppercase tracking-[0.08em] mt-1 text-center">
+              {member.data.role}
+            </p>
+
+            <!-- Bio -->
+            <p class="text-[14px] text-brown-mid leading-[1.75] mt-3">
+              {member.data.bio}
+            </p>
+
+            <!-- Bottom stats -->
+            <div class="flex items-center justify-center gap-4 mt-5 pt-5 border-t border-[#E8E0D0]">
+              <div class="flex items-center gap-1.5 text-[12px] text-brown-light">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span>{member.data.states} states</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-[12px] text-brown-light">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                <span>{member.data.years_exp} yrs exp</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <TestimonialsSection waveBg="cream" />
+
+  <BottomCTA />
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Mission & Vision fade-in
+      gsap.from('#mission-vision-grid > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.7,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#mission-vision-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // Core Values stagger
+      gsap.from('#values-grid > *', {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#values-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // Team cards stagger
+      gsap.from('#team-grid > *', {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#team-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>

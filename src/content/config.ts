@@ -7,6 +7,7 @@ const faqs = defineCollection({
     id: z.string(),
     question: z.string(),
     answer: z.string(),
+    category: z.enum(['Coverage', 'Costs', 'Application', 'Claims']),
   }),
 });
 

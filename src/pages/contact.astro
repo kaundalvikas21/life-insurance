@@ -1,0 +1,245 @@
+---
+// src/pages/contact.astro
+export const prerender = true;
+
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/blocks/PageHero.astro';
+import TrustBar from '../components/blocks/TrustBar.astro';
+import BottomCTA from '../components/blocks/BottomCTA.astro';
+import ContactForm from '../components/interactive/ContactForm';
+---
+
+<Layout
+  title="Contact Us — Patriot American Benefits"
+  description="Get in touch with a licensed agent at Patriot American Benefits. No pressure, no obligation — just honest answers about life insurance for your family."
+>
+  <PageHero
+    title="Get In Touch"
+    subtitle="Our licensed advisors are ready to help — no pressure, no obligation. Just honest answers."
+    breadcrumb="Contact Us"
+  />
+
+  <TrustBar />
+
+  <!-- Contact Info Strip -->
+  <section class="bg-cream py-12">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div id="contact-cards" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Phone -->
+        <div class="bg-white rounded-[16px] p-6 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <p class="text-[12px] uppercase tracking-[0.1em] text-brown-light font-semibold mb-1">Call Us</p>
+          <p class="font-display font-bold text-[18px] text-brown-dark">(888) 550-7159</p>
+          <p class="text-[13px] text-brown-mid mt-1">Mon–Fri 9AM–6PM EST</p>
+        </div>
+
+        <!-- Email -->
+        <div class="bg-white rounded-[16px] p-6 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <p class="text-[12px] uppercase tracking-[0.1em] text-brown-light font-semibold mb-1">Email Us</p>
+          <p class="font-display font-bold text-[18px] text-brown-dark">hello@patriotamerican<wbr />benefits.com</p>
+          <p class="text-[13px] text-brown-mid mt-1">Response within 24 hours</p>
+        </div>
+
+        <!-- Location -->
+        <div class="bg-white rounded-[16px] p-6 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-4">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <p class="text-[12px] uppercase tracking-[0.1em] text-brown-light font-semibold mb-1">Find Us</p>
+          <p class="font-display font-bold text-[18px] text-brown-dark">Nashua, NH 03060</p>
+          <p class="text-[13px] text-brown-mid mt-1">Serving clients nationwide</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Form + Sidebar -->
+  <section class="bg-cream py-16">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div id="contact-main" class="flex flex-col lg:flex-row gap-12">
+
+        <!-- Left column: Form (60%) -->
+        <div class="lg:w-[60%]">
+          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-2">
+            Send Us a Message
+          </h2>
+          <p class="text-[16px] text-brown-mid leading-[1.7] mb-8">
+            Fill out the form and a licensed agent will reach out within 1 business day.
+          </p>
+          <ContactForm client:visible />
+        </div>
+
+        <!-- Right column: Sticky sidebar (40%) -->
+        <div class="lg:w-[40%]">
+          <div class="bg-forest p-8 rounded-3xl sticky top-24" style="box-shadow: 0 16px 48px rgba(93,70,40,0.16)">
+            <p class="text-[12px] uppercase tracking-[0.12em] font-semibold text-amber mb-2">
+              Prefer to talk?
+            </p>
+            <h3 class="font-display font-bold text-[24px] text-white mb-4">
+              Speak With An Agent
+            </h3>
+            <p class="text-[15px] text-white/75 leading-[1.8] mb-6">
+              Skip the form and call us directly. Our agents are available Monday through Friday, 9AM to 6PM EST.
+            </p>
+            <a
+              href="tel:+18885507159"
+              class="flex items-center justify-center gap-3 bg-amber hover:bg-amber-dark text-white font-bold text-[17px] py-4 rounded-pill w-full text-center transition-colors"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call (888) 550-7159
+            </a>
+
+            <!-- Response badge -->
+            <div class="bg-white/10 rounded-xl p-4 mt-4">
+              <p class="text-[13px] text-white/70">
+                ✓ We respond within 1 business day
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider: cream → sage -->
+  <div class="bg-cream overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,10 C480,40 960,0 1440,25 L1440,40 L0,40 Z" fill="#EBF5EE" />
+    </svg>
+  </div>
+
+  <!-- FAQ Teaser -->
+  <section class="bg-sage py-20">
+    <div class="max-w-[1280px] mx-auto px-6">
+
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Common Questions
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
+        Before You Reach Out
+      </h2>
+
+      <div id="faq-teaser-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+        <!-- Q1 -->
+        <div class="bg-white rounded-[16px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.08)">
+          <h3 class="font-semibold text-[16px] text-brown-dark mb-2">
+            Why should I call instead of searching online?
+          </h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Our agents compare 13+ carriers in real-time. You can't get that from a website.
+          </p>
+        </div>
+
+        <!-- Q2 -->
+        <div class="bg-white rounded-[16px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.08)">
+          <h3 class="font-semibold text-[16px] text-brown-dark mb-2">
+            Am I under any obligation?
+          </h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Zero obligation. We provide free consultations with no pressure tactics.
+          </p>
+        </div>
+
+        <!-- Q3 -->
+        <div class="bg-white rounded-[16px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.08)">
+          <h3 class="font-semibold text-[16px] text-brown-dark mb-2">
+            Is this service free?
+          </h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Completely free. We're compensated by the carriers, not by you.
+          </p>
+        </div>
+
+        <!-- Q4 -->
+        <div class="bg-white rounded-[16px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.08)">
+          <h3 class="font-semibold text-[16px] text-brown-dark mb-2">
+            How long does the process take?
+          </h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Most clients get a quote and select a plan within a single 20-minute call.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <BottomCTA />
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Contact info cards
+      gsap.from('#contact-cards > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#contact-cards',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+
+      // Form + sidebar
+      gsap.from('#contact-main > *', {
+        opacity: 0,
+        y: 40,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#contact-main',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // FAQ teaser cards
+      gsap.from('#faq-teaser-grid > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.55,
+        stagger: 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#faq-teaser-grid',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>

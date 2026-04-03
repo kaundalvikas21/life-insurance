@@ -1,0 +1,44 @@
+---
+// src/pages/faq.astro
+export const prerender = true;
+
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/blocks/PageHero.astro';
+import BottomCTA from '../components/blocks/BottomCTA.astro';
+import FAQPage from '../components/interactive/FAQPage';
+import { getCollection } from 'astro:content';
+
+const faqEntries = await getCollection('faqs');
+const faqs = faqEntries.map((e) => e.data);
+---
+
+<Layout
+  title="FAQ — Patriot American Benefits"
+  description="Frequently asked questions about final expense and life insurance coverage, costs, applications, and claims. Get clear answers from licensed advisors."
+>
+  <PageHero
+    title="Frequently Asked Questions"
+    subtitle="Clear answers to the questions we hear most. Still have questions? Call us."
+    breadcrumb="FAQ"
+  />
+
+  <!-- Main FAQ section -->
+  <section class="bg-cream py-24">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Section heading -->
+      <div class="text-center mb-12">
+        <h2 class="font-display font-bold text-[clamp(28px,3.5vw,42px)] text-brown-dark mb-4">
+          Find Your Answer
+        </h2>
+        <p class="text-[17px] text-brown-mid max-w-[560px] mx-auto leading-[1.8]">
+          Browse by category or read through all questions below.
+        </p>
+      </div>
+
+      <!-- FAQPage interactive component -->
+      <FAQPage faqs={faqs} client:load />
+    </div>
+  </section>
+
+  <BottomCTA />
+</Layout>
