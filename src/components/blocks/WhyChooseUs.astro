@@ -53,10 +53,7 @@ const benefits = [
 
     <div id="benefits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {benefits.map(({ icon, title, body }) => (
-        <div class="bg-white p-9 rounded-[20px] hover:-translate-y-1 transition-all duration-300 group"
-             style="box-shadow:0 8px 32px rgba(93,70,40,0.12)"
-             onmouseover="this.style.boxShadow='0 12px 40px rgba(93,70,40,0.18)'"
-             onmouseout="this.style.boxShadow='0 8px 32px rgba(93,70,40,0.12)'">
+        <div class="bg-white p-9 rounded-[20px] group opacity-100">
           <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-6 group-hover:bg-forest/10 transition-colors">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
               <Fragment set:html={icon} />
@@ -78,7 +75,6 @@ const benefits = [
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.from('#benefits-grid > *', {
-        opacity: 0,
         y: 40,
         duration: 0.6,
         stagger: 0.1,

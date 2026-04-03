@@ -41,10 +41,7 @@ const steps = [
 
     <div id="steps-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {steps.map(({ number, title, body, icon }) => (
-        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center transition-all duration-300 hover:bg-white/15 hover:-translate-y-1"
-             style="box-shadow: 0 4px 24px rgba(0,0,0,0.1)"
-             onmouseover="this.style.boxShadow='0 8px 32px rgba(217,119,6,0.2)'"
-             onmouseout="this.style.boxShadow='0 4px 24px rgba(0,0,0,0.1)'">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
           <div class="w-14 h-14 bg-amber rounded-full flex items-center justify-center text-white text-[24px] font-bold mx-auto mb-6">
             {number}
           </div>
@@ -67,7 +64,6 @@ const steps = [
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.from('#steps-grid > *', {
-        opacity: 0,
         x: -30,
         duration: 0.6,
         stagger: 0.15,
