@@ -1,1 +1,64 @@
+/* src/styles/global.css */
 @import "tailwindcss";
+
+@theme {
+  /* ── Colors ── */
+  --color-cream:        #F5F0E8;
+  --color-sage:         #EBF5EE;
+  --color-forest:       #2D6A4F;
+  --color-forest-dark:  #1B4332;
+  --color-amber:        #D97706;
+  --color-amber-dark:   #B45309;
+  --color-teal-nature:  #0E7490;
+  --color-brown-dark:   #2D2412;
+  --color-brown-mid:    #5C4A28;
+  --color-brown-light:  #8B7355;
+  --color-earth:        #92400E;
+
+  /* ── Fonts ── */
+  --font-display: "Montserrat", sans-serif;
+  --font-body:    "Inter", sans-serif;
+
+  /* ── Shadows (warm-tinted) ── */
+  --shadow-warm-sm: 0 4px 16px rgba(93, 70, 40, 0.09);
+  --shadow-warm:    0 8px 32px rgba(93, 70, 40, 0.12);
+  --shadow-warm-lg: 0 16px 48px rgba(93, 70, 40, 0.16);
+
+  /* ── Border radius ── */
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+  --radius-lg:   16px;
+  --radius-md:   12px;
+  --radius-sm:   8px;
+}
+
+/* ── Base resets ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-brown-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
