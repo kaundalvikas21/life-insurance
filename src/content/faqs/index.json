@@ -1,21 +1,26 @@
 [
   {
+    "id": "medical-exam",
     "question": "Is a medical exam required to apply?",
     "answer": "No. Most of our final expense plans require only a simple health questionnaire — no blood tests or medical examinations required."
   },
   {
+    "id": "coverage-start",
     "question": "How quickly does coverage start?",
     "answer": "Many plans offer day-one coverage, meaning your full benefit is active immediately upon policy approval and first payment."
   },
   {
+    "id": "what-is-covered",
     "question": "What does final expense insurance cover?",
     "answer": "These policies cover funeral costs, medical bills, and outstanding debts — ensuring your family isn't left with a financial burden during a difficult time."
   },
   {
+    "id": "plan-cost",
     "question": "How much does a typical plan cost?",
     "answer": "Premiums start as low as $9/month. Your actual rate depends on your age, gender, and health status. We always shop for the most competitive rate available."
   },
   {
+    "id": "pre-existing",
     "question": "Can I apply if I have pre-existing conditions?",
     "answer": "Yes. We work with carriers that specialize in high-risk cases, offering guaranteed issue plans for those with serious health concerns."
   }

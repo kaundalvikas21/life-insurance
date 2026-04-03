@@ -1,0 +1,66 @@
+---
+// src/components/blocks/BottomCTA.astro
+---
+<section
+  id="bottom-cta"
+  class="relative py-24 px-6 overflow-hidden"
+  style="background: linear-gradient(135deg, #1B4332 0%, #0E7490 100%)"
+>
+  <!-- Decorative blob -->
+  <svg
+    class="absolute opacity-[0.12] pointer-events-none"
+    style="top:-80px;right:-60px;width:400px"
+    viewBox="0 0 400 400"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M300,200 C300,300 240,360 160,360 C80,360 30,290 30,200 C30,110 90,40 200,40 C310,40 300,100 300,200Z"
+      fill="#D97706"
+    />
+  </svg>
+
+  <div class="max-w-[1200px] mx-auto text-center relative z-10">
+    <h2 class="font-display font-bold text-[clamp(36px,4.5vw,52px)] text-white leading-[1.1] mb-5">
+      Ready to Protect Your Family?
+    </h2>
+    <p class="text-[18px] text-white/80 leading-[1.8] mb-12 max-w-[560px] mx-auto">
+      Talk to a licensed agent today. No pressure, no hidden fees, no surprises — just honest guidance.
+    </p>
+    <a
+      href="tel:8880000000"
+      class="inline-flex items-center gap-3 bg-white hover:bg-white/90 text-forest px-10 py-5 rounded-pill font-bold text-[17px] transition-colors"
+      style="box-shadow:0 16px 48px rgba(93,70,40,0.16)"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+      </svg>
+      Call (888) 000-0000
+    </a>
+    <p class="text-[13px] text-white/50 mt-6 tracking-wide">
+      Mon–Fri 9AM–6PM EST · Licensed in 49 States
+    </p>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('#bottom-cta > div', {
+        opacity: 0,
+        y: 32,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#bottom-cta',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>
