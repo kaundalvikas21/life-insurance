@@ -16,7 +16,7 @@ const carriers = [
 </div>
 
 <section class="bg-cream py-16" aria-label="Carrier partners">
-  <div class="max-w-[1200px] mx-auto px-6">
+  <div class="max-w-[1280px] mx-auto px-6">
     <p class="text-[12px] font-semibold uppercase tracking-[0.14em] text-forest text-center mb-3">
       Our Trusted Partners
     </p>
@@ -39,3 +39,26 @@ const carriers = [
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('#logos-grid > *', {
+        opacity: 0,
+        y: 20,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#logos-grid',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>
