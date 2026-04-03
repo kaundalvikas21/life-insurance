@@ -32,8 +32,8 @@ pnpm-debug.log*
 .serena/
 .settings.json/
 
-#html-landing-page
-.homepage.html/
-.variant-accessible.html/
-.variant-swiss.html /
-.variant-biophilic.html /
+# html landing page designs
+.stitch/designs/homepage.html
+.stitch/designs/variant-accessible.html
+.stitch/designs/variant-swiss.html
+.stitch/designs/variant-biophilic.html
