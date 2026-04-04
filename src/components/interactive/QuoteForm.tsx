@@ -181,7 +181,7 @@ function Step1({ data, errors, onChange, onNext }: StepProps) {
   return (
     <div>
       <h2 className="font-display font-bold text-[24px] text-brown-dark mb-1">About You</h2>
-      <p className="text-[15px] text-brown-mid mb-6">Let's start with some basic information.</p>
+      <p className="text-[15px] text-brown-mid mb-6">A few quick questions to start.</p>
 
       {/* Age */}
       <div className="mb-5">
@@ -427,7 +427,7 @@ function Step4({ data, errors, onChange, onBack, submitStatus }: Step4Props) {
   return (
     <div>
       <h2 className="font-display font-bold text-[24px] text-brown-dark mb-1">Contact Info</h2>
-      <p className="text-[15px] text-brown-mid mb-6">Almost done! We'll use this to send your personalized quote.</p>
+      <p className="text-[15px] text-brown-mid mb-6">Last step — how should we reach you?</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         {/* Full Name */}
@@ -616,7 +616,7 @@ function Step4({ data, errors, onChange, onBack, submitStatus }: Step4Props) {
       </div>
 
       <p className="text-[12px] text-brown-light text-center mt-4">
-        No obligation. Free consultation. Licensed agents.
+        Free. No obligation.
       </p>
     </div>
   );
@@ -652,7 +652,7 @@ function QuoteSuccess({ phone }: { phone: string }) {
           {([
             'Our agent reviews your coverage needs',
             <><span className="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span> shopped for your best rate</>,
-            'You receive a personalized quote — no pressure',
+            'You get a rate comparison across all 13 carriers',
           ] as React.ReactNode[]).map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-[14px] text-brown-mid">
               <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-forest/15 flex items-center justify-center">

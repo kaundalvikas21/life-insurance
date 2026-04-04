@@ -136,7 +136,7 @@ export default function FAQAccordion({ faqs, showHeading = true, showCTA = true 
               Still have questions?
             </h3>
             <p className="text-[16px] text-white/80 leading-[1.8] mb-8">
-              Our licensed specialists are ready to provide personalized guidance — at no cost to you.
+              Not sure which plan fits? A licensed agent can walk you through your options.
             </p>
             <a
               href="tel:+18885507159"
@@ -148,7 +148,7 @@ export default function FAQAccordion({ faqs, showHeading = true, showCTA = true 
               Call (888) 550-7159
             </a>
             <p className="text-[13px] text-white/60 text-center mt-5">
-              No obligation. 100% Free consultation.
+              No commitment. Free.
             </p>
           </div>
         </div>

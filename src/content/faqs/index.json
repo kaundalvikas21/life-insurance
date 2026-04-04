@@ -38,7 +38,7 @@
   {
     "id": "coverage-amount",
     "question": "How much coverage do I actually need?",
-    "answer": "For final expense coverage, most families choose between $10,000 and $25,000 — enough to cover funeral costs ($9,000–$12,000 average) plus any outstanding medical bills or debts. Our agents will help you calculate the right amount based on your specific situation.",
+    "answer": "For final expense, most people land between $10,000 and $25,000. A basic funeral runs $9,000–$12,000 these days — more in some cities. Add a buffer for any outstanding medical bills and you have a working number.",
     "category": "Coverage"
   },
   {
@@ -62,7 +62,7 @@
   {
     "id": "cancel-policy",
     "question": "What happens if I miss a payment?",
-    "answer": "Most policies include a grace period of 30–31 days. If payment is received within the grace period, coverage continues uninterrupted. If you lapse the policy, many carriers allow reinstatement within 2 years.",
+    "answer": "You have a 30-day grace period. Pay within that window and nothing changes. Let it lapse entirely and most carriers will reinstate the policy if you apply within 2 years — though you'll need to answer health questions again.",
     "category": "Costs"
   },
   {
@@ -74,7 +74,7 @@
   {
     "id": "age-limits",
     "question": "What ages are eligible for coverage?",
-    "answer": "Final expense policies are typically available from age 45 to 85. Term life policies have different age requirements depending on the carrier. Our agents can identify the best options for your exact age and situation.",
+    "answer": "Final expense: 45–85. Term life: 18–70, though this varies by carrier. Call us and we'll tell you exactly what's available for your age.",
     "category": "Application"
   },
   {
@@ -92,7 +92,7 @@
   {
     "id": "how-to-claim",
     "question": "How does my family file a claim?",
-    "answer": "When a loved one passes, the beneficiary contacts the insurance carrier directly (not our agency). They'll need a death certificate and the policy number. Most carriers process claims within 30 days. We recommend keeping a copy of your policy information in a safe, accessible place.",
+    "answer": "The beneficiary calls the carrier directly with a death certificate and policy number. Most carriers process claims within 30 days. Keep a physical copy of the policy somewhere your family can find it — we see a lot of delayed claims because the family can't locate the policy number.",
     "category": "Claims"
   }
 ]
