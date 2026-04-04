@@ -11,7 +11,7 @@ import FAQAccordion  from '../components/interactive/FAQAccordion';
 import { getCollection } from 'astro:content';
 
 const faqEntries = await getCollection('faqs');
-const faqs = faqEntries.map((e) => e.data);
+const faqs = faqEntries.map((e) => e.data).slice(0, 5);
 ---
 
 <Layout
@@ -27,7 +27,22 @@ const faqs = faqEntries.map((e) => e.data);
   <!-- FAQ Section -->
   <section class="bg-sage py-24">
     <div class="max-w-[1280px] mx-auto px-6">
-      <FAQAccordion faqs={faqs} client:load />
+      <div class="flex justify-center mb-5">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Common Questions
+        </span>
+      </div>
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
+        Frequently Asked Questions
+      </h2>
+      <FAQAccordion faqs={faqs} showHeading={false} client:load />
+      <div class="text-center mt-10">
+        <a href="/faq" class="inline-flex items-center gap-2 text-forest font-semibold text-[15px] hover:text-forest-dark transition-colors">
+          See All FAQs
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

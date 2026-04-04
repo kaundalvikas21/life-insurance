@@ -3,7 +3,6 @@
 export const prerender = true;
 
 import Layout from '../../layouts/Layout.astro';
-import PageHero from '../../components/blocks/PageHero.astro';
 import BottomCTA from '../../components/blocks/BottomCTA.astro';
 import FAQAccordion from '../../components/interactive/FAQAccordion.tsx';
 
@@ -184,37 +183,104 @@ const icons: Record<string, string> = {
 ---
 
 <Layout
-  title={`${service.title} — Patriot American Benefits`}
+  title={`${service.title} — Life Insurance Coverage`}
   description={service.tagline}
 >
-  <!-- Breadcrumbs -->
-  <nav class="bg-cream py-4" aria-label="Breadcrumb">
-    <div class="max-w-[1280px] mx-auto px-6">
-      <ol class="flex items-center gap-2 text-[13px]">
-        <li>
-          <a href="/" class="text-brown-light hover:text-forest transition-colors">Home</a>
-        </li>
-        <li class="text-brown-light">/</li>
-        <li>
-          <a href="/services" class="text-brown-light hover:text-forest transition-colors">Services</a>
-        </li>
-        <li class="text-brown-light">/</li>
-        <li class="text-brown-mid font-medium">{service.title}</li>
-      </ol>
-    </div>
-  </nav>
+  <!-- Two-column service hero -->
+  <section class="relative bg-forest-dark py-20 md:py-28 overflow-hidden">
+    <!-- Background blobs -->
+    <svg class="absolute pointer-events-none opacity-[0.15]" style="top:-60px;right:-80px;width:420px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M310,190 C310,275 250,345 165,345 C80,345 30,280 30,195 C30,110 90,45 185,45 C280,45 310,105 310,190Z" fill="#2D6A4F" />
+    </svg>
+    <svg class="absolute pointer-events-none opacity-[0.10]" style="bottom:-40px;left:-60px;width:320px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M260,210 C260,285 205,345 135,345 C65,345 25,285 25,210 C25,135 75,65 160,65 C245,65 260,135 260,210Z" fill="#EBF5EE" />
+    </svg>
 
-  <PageHero
-    title={service.title}
-    subtitle={service.headline}
-  />
+    <div class="max-w-[1280px] mx-auto px-6 relative z-10">
+      <div id="service-hero-content" class="flex flex-col lg:flex-row items-center gap-12">
+
+        <!-- Left: text + CTAs -->
+        <div class="lg:w-[58%]">
+          <!-- Breadcrumb trail -->
+          <nav aria-label="Breadcrumb" class="mb-5">
+            <ol class="flex items-center gap-1.5 text-[13px]">
+              <li><a href="/" class="text-white/50 hover:text-white/80 transition-colors">Home</a></li>
+              <li class="text-white/30" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></li>
+              <li><a href="/services" class="text-white/50 hover:text-white/80 transition-colors">Services</a></li>
+              <li class="text-white/30" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></li>
+              <li class="text-white/80 font-medium">{service.title}</li>
+            </ol>
+          </nav>
+          <!-- Breadcrumb pill -->
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-forest/40 text-sage border border-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em] mb-6">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            {service.title}
+          </span>
+          <h1 class="font-display font-bold text-[clamp(32px,4.5vw,52px)] text-white leading-[1.1] mb-4">
+            {service.headline}
+          </h1>
+          <p class="text-[17px] text-white/70 leading-[1.8] mb-8 max-w-[520px]">
+            {service.description}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/quote" class="inline-flex items-center justify-center gap-2 bg-amber hover:bg-amber-dark text-white font-bold text-[16px] px-7 py-4 rounded-pill transition-colors">
+              Get a Free Quote
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="tel:+18885507159" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white/70 text-white font-semibold text-[15px] px-7 py-4 rounded-pill transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Call Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: stats card -->
+        <div class="lg:w-[42%] w-full">
+          <div class="bg-white/8 border border-white/15 rounded-3xl p-8 backdrop-blur-sm">
+            <!-- Icon -->
+            <div class="w-14 h-14 bg-forest/60 rounded-2xl flex items-center justify-center mb-6">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={icons[service.features[0].icon] || icons.shield} />
+              </svg>
+            </div>
+            <!-- Price + Age -->
+            <div class="flex items-center gap-4 mb-6">
+              <div class="bg-amber/20 border border-amber/30 rounded-xl px-4 py-2">
+                <p class="text-[11px] text-amber/80 font-semibold uppercase tracking-[0.1em]">Starting From</p>
+                <p class="text-[22px] font-display font-bold text-amber leading-none mt-0.5">{service.priceFrom}</p>
+              </div>
+              <div class="bg-white/10 rounded-xl px-4 py-2">
+                <p class="text-[11px] text-white/60 font-semibold uppercase tracking-[0.1em]">Eligible Ages</p>
+                <p class="text-[16px] font-display font-bold text-white leading-none mt-0.5">{service.ageRange}</p>
+              </div>
+            </div>
+            <!-- Top 3 benefits -->
+            <ul class="space-y-3">
+              {service.benefits.slice(0, 3).map((b: string) => (
+                <li class="flex items-start gap-3 text-[14px] text-white/80">
+                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-forest/60 flex items-center justify-center">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2.5 6.5l2.5 2.5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- Key Benefits Section -->
   <section class="bg-cream py-20">
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           Key Benefits
         </span>
       </div>
@@ -251,7 +317,8 @@ const icons: Record<string, string> = {
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           How It Works
         </span>
       </div>
@@ -279,7 +346,7 @@ const icons: Record<string, string> = {
           </div>
           <h3 class="font-display font-semibold text-[20px] text-brown-dark mb-3">Compare Options</h3>
           <p class="text-[15px] text-brown-mid leading-[1.8]">
-            We shop 13+ carriers to find you the best rates and coverage options.
+            We shop <span class="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span> to find you the best rates and coverage options.
           </p>
         </div>
 
@@ -304,57 +371,95 @@ const icons: Record<string, string> = {
     </svg>
   </div>
 
-  <!-- Eligibility Section -->
+  <!-- Eligibility + Perfect For Section -->
   <section class="bg-cream py-20">
     <div class="max-w-[1280px] mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <!-- Left: Eligibility -->
-        <div>
-          <!-- Label pill -->
-          <div class="flex justify-start mb-5">
-            <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+
+      <!-- Section header -->
+      <div class="text-center mb-12">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em] mb-4">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Is This Right For You?
+        </span>
+        <h2 class="font-display font-bold text-[clamp(26px,3.5vw,36px)] text-brown-dark">
+          Who Qualifies &amp; Who It's Perfect For
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+        <!-- Card: Eligibility -->
+        <div class="bg-white rounded-[24px] border border-[#E8E0D4] overflow-hidden flex flex-col" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <!-- Card top accent bar -->
+          <div class="h-1.5 bg-forest w-full"></div>
+          <div class="p-8 flex flex-col flex-1">
+            <!-- Icon -->
+            <div class="w-14 h-14 bg-sage rounded-2xl flex items-center justify-center mb-6">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+                <polyline points="17 11 19 13 23 9"/>
+              </svg>
+            </div>
+            <!-- Badge + heading -->
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[11px] font-semibold uppercase tracking-[0.14em] mb-3 self-start">
               Eligibility
             </span>
+            <h3 class="font-display font-bold text-[24px] text-brown-dark mb-2">Who Qualifies?</h3>
+            <p class="text-[14px] text-brown-light mb-6">Requirements to be eligible for this plan.</p>
+            <!-- Divider -->
+            <div class="border-t border-[#F0EBE3] mb-6"></div>
+            <!-- List -->
+            <ul class="space-y-4 flex-1">
+              {service.eligibility.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-forest flex items-center justify-center">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2.5 6.5l2.5 2.5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="text-[15px] text-brown-mid leading-[1.75]">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-6">Who Qualifies?</h2>
-
-          <ul class="space-y-4">
-            {service.eligibility.map((item) => (
-              <li class="flex items-start gap-3">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[15px] text-brown-mid leading-[1.8]">{item}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
-        <!-- Right: Perfect For -->
-        <div>
-          <!-- Label pill -->
-          <div class="flex justify-start mb-5">
-            <span class="inline-block px-4 py-1.5 bg-amber text-white rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <!-- Card: Perfect For -->
+        <div class="bg-white rounded-[24px] border border-[#E8E0D4] overflow-hidden flex flex-col" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <!-- Card top accent bar -->
+          <div class="h-1.5 bg-amber w-full"></div>
+          <div class="p-8 flex flex-col flex-1">
+            <!-- Icon -->
+            <div class="w-14 h-14 bg-amber/10 rounded-2xl flex items-center justify-center mb-6">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <!-- Badge + heading -->
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-amber/10 border border-amber/20 text-amber-dark rounded-pill text-[11px] font-semibold uppercase tracking-[0.14em] mb-3 self-start">
               Perfect For
             </span>
+            <h3 class="font-display font-bold text-[24px] text-brown-dark mb-2">This Plan Is Ideal For...</h3>
+            <p class="text-[14px] text-brown-light mb-6">Key reasons people choose this coverage.</p>
+            <!-- Divider -->
+            <div class="border-t border-[#F0EBE3] mb-6"></div>
+            <!-- List -->
+            <ul class="space-y-4 flex-1">
+              {service.benefits.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-amber flex items-center justify-center">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2.5 6.5l2.5 2.5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="text-[15px] text-brown-mid leading-[1.75]">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-6">This Plan Is Ideal For...</h2>
-
-          <ul class="space-y-4">
-            {service.benefits.map((item) => (
-              <li class="flex items-start gap-3">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#D97706" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[15px] text-brown-mid leading-[1.8]">{item}</span>
-              </li>
-            ))}
-          </ul>
         </div>
+
       </div>
     </div>
   </section>
@@ -368,10 +473,11 @@ const icons: Record<string, string> = {
 
   <!-- FAQ Section -->
   <section class="bg-sage py-20">
-    <div class="max-w-[800px] mx-auto px-6">
+    <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Common Questions
         </span>
       </div>
@@ -381,40 +487,14 @@ const icons: Record<string, string> = {
       </h2>
 
       <FAQAccordion
-        faqs={service.faqs.map((faq, index) => ({
-          id: `${slug}-${index}`,
-          question: faq.q,
-          answer: faq.a,
-        }))}
-        client:load
-      />
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-forest-dark py-20">
-    <div class="max-w-[800px] mx-auto px-6 text-center">
-      <h2 class="font-display font-bold text-[clamp(28px,4vw,38px)] text-white mb-6">
-        Ready to Get Covered?
-      </h2>
-      <p class="text-[17px] text-forest/80 mb-8 max-w-[540px] mx-auto">
-        Get a personalized quote for {service.title} in minutes. No obligation, no pressure.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href={`/quote?service=${slug}`}
-          class="inline-block bg-amber hover:bg-amber-dark text-white font-bold text-[17px] py-4 px-8 rounded-pill transition-colors duration-200"
-        >
-          Get a {service.title} Quote
-        </a>
-        <a
-          href="/contact"
-          class="inline-block border-2 border-white text-white hover:bg-white hover:text-forest-dark font-bold text-[17px] py-4 px-8 rounded-pill transition-colors duration-200"
-        >
-          Talk to an Agent
-        </a>
-      </div>
+          faqs={service.faqs.map((faq, index) => ({
+            id: `${slug}-${index}`,
+            question: faq.q,
+            answer: faq.a,
+          }))}
+          showHeading={false}
+          client:load
+        />
     </div>
   </section>
 
@@ -429,7 +509,6 @@ const icons: Record<string, string> = {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Benefits stagger
       gsap.from('#benefits-grid > *', {
         opacity: 0,
         y: 40,
@@ -438,12 +517,11 @@ const icons: Record<string, string> = {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#benefits-grid',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });
 
-      // Steps stagger
       gsap.from('#steps-grid > *', {
         opacity: 0,
         y: 30,
@@ -452,7 +530,7 @@ const icons: Record<string, string> = {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#steps-grid',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });

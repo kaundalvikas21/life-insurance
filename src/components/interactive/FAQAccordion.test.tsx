@@ -16,13 +16,13 @@ describe('FAQAccordion', () => {
 
   it('answers are hidden by default', () => {
     render(<FAQAccordion faqs={faqs} />);
-    expect(screen.queryByText('No exam needed.')).not.toBeInTheDocument();
+    expect(document.getElementById('faq-answer-0')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('reveals answer when question is clicked', () => {
     render(<FAQAccordion faqs={faqs} />);
     fireEvent.click(screen.getByRole('button', { name: /is a medical exam/i }));
-    expect(screen.getByText('No exam needed.')).toBeInTheDocument();
+    expect(document.getElementById('faq-answer-0')).toHaveAttribute('aria-hidden', 'false');
   });
 
   it('closes open answer when clicked again', () => {
@@ -30,15 +30,15 @@ describe('FAQAccordion', () => {
     const btn = screen.getByRole('button', { name: /is a medical exam/i });
     fireEvent.click(btn);
     fireEvent.click(btn);
-    expect(screen.queryByText('No exam needed.')).not.toBeInTheDocument();
+    expect(document.getElementById('faq-answer-0')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('opening one item closes the previously open item', () => {
     render(<FAQAccordion faqs={faqs} />);
     fireEvent.click(screen.getByRole('button', { name: /is a medical exam/i }));
     fireEvent.click(screen.getByRole('button', { name: /how quickly/i }));
-    expect(screen.queryByText('No exam needed.')).not.toBeInTheDocument();
-    expect(screen.getByText('Day one coverage.')).toBeInTheDocument();
+    expect(document.getElementById('faq-answer-0')).toHaveAttribute('aria-hidden', 'true');
+    expect(document.getElementById('faq-answer-1')).toHaveAttribute('aria-hidden', 'false');
   });
 
   it('each question button has correct aria-expanded state', () => {

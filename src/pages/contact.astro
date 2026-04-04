@@ -10,13 +10,14 @@ import ContactForm from '../components/interactive/ContactForm';
 ---
 
 <Layout
-  title="Contact Us — Patriot American Benefits"
-  description="Get in touch with a licensed agent at Patriot American Benefits. No pressure, no obligation — just honest answers about life insurance for your family."
+  title="Contact Us — Life Insurance Coverage"
+  description="Get in touch with a licensed agent at Life Insurance Coverage. No pressure, no obligation — just honest answers about life insurance for your family."
 >
   <PageHero
     title="Get In Touch"
     subtitle="Our licensed advisors are ready to help — no pressure, no obligation. Just honest answers."
     breadcrumb="Contact Us"
+    breadcrumbIcon='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>'
   />
 
   <TrustBar />
@@ -47,7 +48,7 @@ import ContactForm from '../components/interactive/ContactForm';
             </svg>
           </div>
           <p class="text-[12px] uppercase tracking-[0.1em] text-brown-light font-semibold mb-1">Email Us</p>
-          <p class="font-display font-bold text-[18px] text-brown-dark">hello@patriotamerican<wbr />benefits.com</p>
+          <p class="font-display font-bold text-[18px] text-brown-dark">contact@lifeinsurancecoverage.co</p>
           <p class="text-[13px] text-brown-mid mt-1">Response within 24 hours</p>
         </div>
 
@@ -75,18 +76,21 @@ import ContactForm from '../components/interactive/ContactForm';
 
         <!-- Left column: Form (60%) -->
         <div class="lg:w-[60%]">
-          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-2">
-            Send Us a Message
-          </h2>
-          <p class="text-[16px] text-brown-mid leading-[1.7] mb-8">
-            Fill out the form and a licensed agent will reach out within 1 business day.
-          </p>
-          <ContactForm client:visible />
+          <div class="bg-white rounded-[24px] p-8 md:p-10 border border-[#E8E0D4]" style="box-shadow: 0 8px 32px rgba(93,70,40,0.08)">
+            <h2 class="font-display font-bold text-[28px] text-brown-dark mb-2">
+              Send Us a Message
+            </h2>
+            <p class="text-[16px] text-brown-mid leading-[1.7] mb-8">
+              Fill out the form and a licensed agent will reach out within 1 business day.
+            </p>
+            <ContactForm client:visible />
+          </div>
         </div>
 
         <!-- Right column: Sticky sidebar (40%) -->
         <div class="lg:w-[40%]">
-          <div class="bg-forest p-8 rounded-3xl sticky top-24" style="box-shadow: 0 16px 48px rgba(93,70,40,0.16)">
+          <div class="sticky top-24">
+          <div class="bg-forest p-8 rounded-3xl" style="box-shadow: 0 16px 48px rgba(93,70,40,0.16)">
             <p class="text-[12px] uppercase tracking-[0.12em] font-semibold text-amber mb-2">
               Prefer to talk?
             </p>
@@ -108,10 +112,36 @@ import ContactForm from '../components/interactive/ContactForm';
 
             <!-- Response badge -->
             <div class="bg-white/10 rounded-xl p-4 mt-4">
-              <p class="text-[13px] text-white/70">
+              <p class="text-[16px] text-white/70 text-center">
                 ✓ We respond within 1 business day
               </p>
             </div>
+
+          </div>
+
+          <!-- Business Hours card -->
+          <div class="bg-white rounded-[20px] p-6 mt-5" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+            <div class="flex items-center gap-2 mb-4">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <p class="text-[12px] uppercase tracking-[0.12em] font-semibold text-forest">
+                Business Hours
+              </p>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex justify-between items-center">
+                <span class="text-[14px] text-brown-mid">Monday – Friday</span>
+                <span class="text-[14px] font-semibold text-brown-dark">9AM – 6PM EST</span>
+              </li>
+              <li class="flex justify-between items-center border-t border-[#EDE8DF] pt-3">
+                <span class="text-[14px] text-brown-mid">Saturday</span>
+                <span class="text-[14px] font-semibold text-brown-dark">10AM – 2PM EST</span>
+              </li>
+              <li class="flex justify-between items-center border-t border-[#EDE8DF] pt-3">
+                <span class="text-[14px] text-brown-mid">Sunday</span>
+                <span class="text-[14px] font-semibold text-brown-light">Closed</span>
+              </li>
+            </ul>
+          </div>
           </div>
         </div>
 
@@ -132,7 +162,8 @@ import ContactForm from '../components/interactive/ContactForm';
 
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           Common Questions
         </span>
       </div>
@@ -149,7 +180,7 @@ import ContactForm from '../components/interactive/ContactForm';
             Why should I call instead of searching online?
           </h3>
           <p class="text-[14px] text-brown-mid leading-[1.7]">
-            Our agents compare 13+ carriers in real-time. You can't get that from a website.
+            Our agents compare <span class="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span> in real-time. You can't get that from a website.
           </p>
         </div>
 
@@ -196,10 +227,8 @@ import ContactForm from '../components/interactive/ContactForm';
 
   document.addEventListener('astro:page-load', () => {
     gsap.registerPlugin(ScrollTrigger);
-
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Contact info cards
       gsap.from('#contact-cards > *', {
         opacity: 0,
         y: 30,
@@ -208,12 +237,11 @@ import ContactForm from '../components/interactive/ContactForm';
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#contact-cards',
-          start: 'top 85%',
+          start: 'top 95%',
           once: true,
         },
       });
 
-      // Form + sidebar
       gsap.from('#contact-main > *', {
         opacity: 0,
         y: 40,
@@ -222,12 +250,11 @@ import ContactForm from '../components/interactive/ContactForm';
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#contact-main',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });
 
-      // FAQ teaser cards
       gsap.from('#faq-teaser-grid > *', {
         opacity: 0,
         y: 30,
@@ -236,10 +263,11 @@ import ContactForm from '../components/interactive/ContactForm';
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#faq-teaser-grid',
-          start: 'top 85%',
+          start: 'top 95%',
           once: true,
         },
       });
     });
   });
 </script>
+

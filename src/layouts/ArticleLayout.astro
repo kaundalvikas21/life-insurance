@@ -14,11 +14,20 @@ interface Props {
 const { title, description = '', lastUpdated, breadcrumb } = Astro.props;
 ---
 
-<Layout title={`${title} — Patriot American Benefits`} description={description}>
+<Layout title={`${title} — Life Insurance Coverage`} description={description}>
   <PageHero title={title} subtitle={description} breadcrumb={breadcrumb} />
 
   <article class="bg-cream py-16">
     <div class="max-w-[800px] mx-auto px-6">
+      {breadcrumb && (
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-1.5 text-[13px] text-brown-light flex-wrap">
+            <li><a href="/" class="hover:text-forest transition-colors">Home</a></li>
+            <li aria-hidden="true" class="text-brown-light/50">›</li>
+            <li class="text-brown-dark font-medium">{breadcrumb}</li>
+          </ol>
+        </nav>
+      )}
       {lastUpdated && (
         <p class="text-[13px] text-brown-light mb-8">Last updated: {lastUpdated}</p>
       )}

@@ -9,12 +9,15 @@ interface StepData {
   state: string;
   coverageType: string;
   coverageAmount: number;
-  tobaccoUse: string;
-  preExisting: string;
+  healthStatus: string;
   name: string;
   phone: string;
   email: string;
+  zipCode: string;
+  dobMonth: string;
+  dobYear: string;
   contactTime: string;
+  consent: boolean;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -25,7 +28,7 @@ const US_STATES = [
   'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
   'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
   'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
-  'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+  'New Hampshire', 'New Jersey', 'New Mexico',
   'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
   'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
   'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
@@ -38,12 +41,15 @@ const INITIAL_DATA: StepData = {
   state: '',
   coverageType: '',
   coverageAmount: 15000,
-  tobaccoUse: '',
-  preExisting: '',
+  healthStatus: '',
   name: '',
   phone: '',
   email: '',
+  zipCode: '',
+  dobMonth: '',
+  dobYear: '',
   contactTime: '',
+  consent: false,
 };
 
 const STEP_LABELS = ['About You', 'Coverage', 'Health', 'Contact'];
@@ -53,6 +59,31 @@ const COVERAGE_OPTIONS = [
   { value: 'Term Life', label: 'Term Life', description: 'Coverage for a set time period' },
   { value: 'Whole Life', label: 'Whole Life', description: 'Lifetime coverage + cash value' },
 ];
+
+const HEALTH_STATUS_OPTIONS = [
+  { value: 'Excellent', dot: '#22c55e' },
+  { value: 'Good', dot: '#2D6A4F' },
+  { value: 'Fair', dot: '#f59e0b' },
+  { value: 'Poor', dot: '#ef4444' },
+];
+
+const DOB_MONTHS = [
+  { value: '01', label: 'January' },
+  { value: '02', label: 'February' },
+  { value: '03', label: 'March' },
+  { value: '04', label: 'April' },
+  { value: '05', label: 'May' },
+  { value: '06', label: 'June' },
+  { value: '07', label: 'July' },
+  { value: '08', label: 'August' },
+  { value: '09', label: 'September' },
+  { value: '10', label: 'October' },
+  { value: '11', label: 'November' },
+  { value: '12', label: 'December' },
+];
+
+const CURRENT_YEAR = new Date().getFullYear();
+const DOB_YEARS = Array.from({ length: 101 }, (_, i) => CURRENT_YEAR - i);
 
 const INPUT_BASE =
   'w-full px-4 py-3 border rounded-lg text-brown-dark text-[15px] focus:outline-none focus:ring-2 focus:ring-forest/40 focus:border-forest transition-colors';
@@ -73,8 +104,7 @@ function validateStep(step: number, data: StepData): Record<string, string> {
   } else if (step === 2) {
     if (!data.coverageType) errs.coverageType = 'Please select a coverage type.';
   } else if (step === 3) {
-    if (!data.tobaccoUse) errs.tobaccoUse = 'Please select an option.';
-    if (!data.preExisting) errs.preExisting = 'Please select an option.';
+    if (!data.healthStatus) errs.healthStatus = 'Please select your health status.';
   } else if (step === 4) {
     if (!data.name.trim() || data.name.trim().length < 2) {
       errs.name = 'Please enter your full name (at least 2 characters).';
@@ -85,6 +115,12 @@ function validateStep(step: number, data: StepData): Record<string, string> {
     if (!data.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
       errs.email = 'Please enter a valid email address.';
     }
+    if (!data.zipCode.trim() || !/^\d{5}$/.test(data.zipCode.trim())) {
+      errs.zipCode = 'Please enter a valid 5-digit ZIP code.';
+    }
+    if (!data.dobMonth) errs.dobMonth = 'Please select birth month.';
+    if (!data.dobYear) errs.dobYear = 'Please select birth year.';
+    if (!data.consent) errs.consent = 'You must agree to be contacted to submit.';
   }
   return errs;
 }
@@ -327,57 +363,38 @@ function Step3({ data, errors, onChange, onNext, onBack }: StepProps) {
       <h2 className="font-display font-bold text-[24px] text-brown-dark mb-1">Health Info</h2>
       <p className="text-[15px] text-brown-mid mb-6">A few health questions to find your best rate.</p>
 
-      {/* Tobacco Use */}
-      <div className="mb-6">
-        <p className="text-[14px] font-semibold text-brown-dark mb-3">
-          Tobacco Use <span className="text-red-500">*</span>
-        </p>
-        <div className="flex gap-6">
-          {['Yes', 'No'].map((opt) => (
-            <label key={opt} className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="tobaccoUse"
-                value={opt}
-                checked={data.tobaccoUse === opt}
-                onChange={onChange}
-                className="w-4 h-4"
-                style={{ accentColor: '#2D6A4F' }}
-              />
-              <span className="text-[15px] text-brown-dark">{opt}</span>
-            </label>
-          ))}
-        </div>
-        {errors.tobaccoUse && <p className="text-[13px] text-red-500 mt-1">{errors.tobaccoUse}</p>}
-      </div>
-
-      {/* Pre-existing Conditions */}
+      {/* Health Status */}
       <div className="mb-8">
         <p className="text-[14px] font-semibold text-brown-dark mb-3">
-          Pre-existing Conditions <span className="text-red-500">*</span>
+          Health Status <span className="text-red-500">*</span>
         </p>
-        <div className="flex gap-6">
-          {['Yes', 'No'].map((opt) => (
-            <label key={opt} className="flex items-center gap-2 cursor-pointer">
+        <div className="grid grid-cols-2 gap-3">
+          {HEALTH_STATUS_OPTIONS.map(({ value, dot }) => (
+            <label
+              key={value}
+              className={`border-2 rounded-[14px] p-4 cursor-pointer transition-all flex items-center gap-3
+                ${data.healthStatus === value
+                  ? 'border-forest bg-forest/5'
+                  : 'border-[#D9D0C2] bg-white hover:border-forest/40'}`}
+            >
               <input
                 type="radio"
-                name="preExisting"
-                value={opt}
-                checked={data.preExisting === opt}
+                name="healthStatus"
+                value={value}
+                checked={data.healthStatus === value}
                 onChange={onChange}
-                className="w-4 h-4"
-                style={{ accentColor: '#2D6A4F' }}
+                className="sr-only"
               />
-              <span className="text-[15px] text-brown-dark">{opt}</span>
+              <span
+                className="w-3 h-3 rounded-full flex-shrink-0"
+                style={{ backgroundColor: dot }}
+                aria-hidden="true"
+              />
+              <span className="font-semibold text-[15px] text-brown-dark">{value}</span>
             </label>
           ))}
         </div>
-        {data.preExisting === 'Yes' && (
-          <p className="text-brown-mid text-[13px] mt-2 bg-amber/10 border border-amber/30 rounded-lg px-3 py-2">
-            We work with carriers that specialize in high-risk cases.
-          </p>
-        )}
-        {errors.preExisting && <p className="text-[13px] text-red-500 mt-1">{errors.preExisting}</p>}
+        {errors.healthStatus && <p className="text-[13px] text-red-500 mt-2">{errors.healthStatus}</p>}
       </div>
 
       <div className="flex justify-between">
@@ -412,47 +429,49 @@ function Step4({ data, errors, onChange, onBack, submitStatus }: Step4Props) {
       <h2 className="font-display font-bold text-[24px] text-brown-dark mb-1">Contact Info</h2>
       <p className="text-[15px] text-brown-mid mb-6">Almost done! We'll use this to send your personalized quote.</p>
 
-      {/* Full Name */}
-      <div className="mb-5">
-        <label htmlFor="name" className="block text-[14px] font-semibold text-brown-dark mb-2">
-          Full Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={data.name}
-          onChange={onChange}
-          placeholder="Jane Smith"
-          autoComplete="name"
-          aria-required="true"
-          aria-describedby={errors.name ? 'name-error' : undefined}
-          className={errors.name ? INPUT_ERROR : INPUT_NORMAL}
-        />
-        {errors.name && <p id="name-error" className="text-[13px] text-red-500 mt-1">{errors.name}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        {/* Full Name */}
+        <div>
+          <label htmlFor="name" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            Full Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            value={data.name}
+            onChange={onChange}
+            placeholder="Jane Smith"
+            autoComplete="name"
+            aria-required="true"
+            aria-describedby={errors.name ? 'name-error' : undefined}
+            className={errors.name ? INPUT_ERROR : INPUT_NORMAL}
+          />
+          {errors.name && <p id="name-error" className="text-[13px] text-red-500 mt-1">{errors.name}</p>}
+        </div>
+
+        {/* Phone */}
+        <div>
+          <label htmlFor="phone" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            Phone Number <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            value={data.phone}
+            onChange={onChange}
+            placeholder="(555) 000-0000"
+            autoComplete="tel"
+            aria-required="true"
+            aria-describedby={errors.phone ? 'phone-error' : undefined}
+            className={errors.phone ? INPUT_ERROR : INPUT_NORMAL}
+          />
+          {errors.phone && <p id="phone-error" className="text-[13px] text-red-500 mt-1">{errors.phone}</p>}
+        </div>
       </div>
 
-      {/* Phone */}
-      <div className="mb-5">
-        <label htmlFor="phone" className="block text-[14px] font-semibold text-brown-dark mb-2">
-          Phone Number <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={data.phone}
-          onChange={onChange}
-          placeholder="(555) 000-0000"
-          autoComplete="tel"
-          aria-required="true"
-          aria-describedby={errors.phone ? 'phone-error' : undefined}
-          className={errors.phone ? INPUT_ERROR : INPUT_NORMAL}
-        />
-        {errors.phone && <p id="phone-error" className="text-[13px] text-red-500 mt-1">{errors.phone}</p>}
-      </div>
-
-      {/* Email */}
+      {/* Email — full width */}
       <div className="mb-5">
         <label htmlFor="email" className="block text-[14px] font-semibold text-brown-dark mb-2">
           Email Address <span className="text-red-500">*</span>
@@ -472,24 +491,111 @@ function Step4({ data, errors, onChange, onBack, submitStatus }: Step4Props) {
         {errors.email && <p id="email-error" className="text-[13px] text-red-500 mt-1">{errors.email}</p>}
       </div>
 
-      {/* Preferred Contact Time */}
-      <div className="mb-8">
-        <label htmlFor="contactTime" className="block text-[14px] font-semibold text-brown-dark mb-2">
-          Preferred Contact Time
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+        {/* Zip Code */}
+        <div>
+          <label htmlFor="zipCode" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            ZIP Code <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="zipCode"
+            name="zipCode"
+            type="text"
+            inputMode="numeric"
+            maxLength={5}
+            value={data.zipCode}
+            onChange={onChange}
+            placeholder="12345"
+            autoComplete="postal-code"
+            aria-required="true"
+            aria-describedby={errors.zipCode ? 'zipCode-error' : undefined}
+            className={errors.zipCode ? INPUT_ERROR : INPUT_NORMAL}
+          />
+          {errors.zipCode && <p id="zipCode-error" className="text-[13px] text-red-500 mt-1">{errors.zipCode}</p>}
+        </div>
+
+        {/* Preferred Contact Time */}
+        <div>
+          <label htmlFor="contactTime" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            Preferred Contact Time
+          </label>
+          <select
+            id="contactTime"
+            name="contactTime"
+            value={data.contactTime}
+            onChange={onChange}
+            className={INPUT_NORMAL}
+          >
+            <option value="Any Time">Any Time</option>
+            <option value="Morning (9AM-12PM)">Morning (9AM–12PM)</option>
+            <option value="Afternoon (12PM-3PM)">Afternoon (12PM–3PM)</option>
+            <option value="Evening (3PM-6PM)">Evening (3PM–6PM)</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Date of Birth */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+        <div>
+          <label htmlFor="dobMonth" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            Birth Month <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="dobMonth"
+            name="dobMonth"
+            value={data.dobMonth}
+            onChange={onChange}
+            aria-required="true"
+            aria-describedby={errors.dobMonth ? 'dobMonth-error' : undefined}
+            className={errors.dobMonth ? INPUT_ERROR : INPUT_NORMAL}
+          >
+            <option value="">Select month…</option>
+            {DOB_MONTHS.map(({ value, label }) => (
+              <option key={value} value={value}>{label}</option>
+            ))}
+          </select>
+          {errors.dobMonth && <p id="dobMonth-error" className="text-[13px] text-red-500 mt-1">{errors.dobMonth}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="dobYear" className="block text-[14px] font-semibold text-brown-dark mb-2">
+            Birth Year <span className="text-red-500">*</span>
+          </label>
+          <select
+            id="dobYear"
+            name="dobYear"
+            value={data.dobYear}
+            onChange={onChange}
+            aria-required="true"
+            aria-describedby={errors.dobYear ? 'dobYear-error' : undefined}
+            className={errors.dobYear ? INPUT_ERROR : INPUT_NORMAL}
+          >
+            <option value="">Select year…</option>
+            {DOB_YEARS.map((year) => (
+              <option key={year} value={String(year)}>{year}</option>
+            ))}
+          </select>
+          {errors.dobYear && <p id="dobYear-error" className="text-[13px] text-red-500 mt-1">{errors.dobYear}</p>}
+        </div>
+      </div>
+
+      {/* Consent Checkbox */}
+      <div className="mb-6">
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            name="consent"
+            checked={data.consent}
+            onChange={onChange}
+            className="mt-1 w-4 h-4 flex-shrink-0"
+            style={{ accentColor: '#2D6A4F' }}
+          />
+          <span className="text-[13px] text-brown-mid leading-[1.6]">
+            I agree to be contacted by a licensed agent regarding insurance options. I understand this is not a purchase commitment.
+            <span className="text-red-500"> *</span>
+          </span>
         </label>
-        <select
-          id="contactTime"
-          name="contactTime"
-          value={data.contactTime}
-          onChange={onChange}
-          className={INPUT_NORMAL}
-        >
-          <option value="">Any Time</option>
-          <option value="Morning (9AM-12PM)">Morning (9AM–12PM)</option>
-          <option value="Afternoon (12PM-3PM)">Afternoon (12PM–3PM)</option>
-          <option value="Evening (3PM-6PM)">Evening (3PM–6PM)</option>
-          <option value="Any Time">Any Time</option>
-        </select>
+        {errors.consent && <p className="text-[13px] text-red-500 mt-2 ml-7">{errors.consent}</p>}
       </div>
 
       <div className="flex justify-between items-center">
@@ -543,12 +649,12 @@ function QuoteSuccess({ phone }: { phone: string }) {
       <div className="bg-cream rounded-[16px] p-6 text-left w-full mb-8">
         <p className="font-semibold text-brown-dark text-[15px] mb-4">Here's what happens next:</p>
         <ul className="space-y-3">
-          {[
+          {([
             'Our agent reviews your coverage needs',
-            'We shop 13+ carriers for your best rate',
+            <><span className="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span> shopped for your best rate</>,
             'You receive a personalized quote — no pressure',
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3 text-[14px] text-brown-mid">
+          ] as React.ReactNode[]).map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-[14px] text-brown-mid">
               <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-forest/15 flex items-center justify-center">
                 <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path
@@ -589,10 +695,15 @@ export function QuoteForm() {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
-      setData((prev) => ({
-        ...prev,
-        [name]: name === 'coverageAmount' ? parseInt(value, 10) : value,
-      }));
+      if (e.target.type === 'checkbox') {
+        const checked = (e.target as HTMLInputElement).checked;
+        setData((prev) => ({ ...prev, [name]: checked }));
+      } else {
+        setData((prev) => ({
+          ...prev,
+          [name]: name === 'coverageAmount' ? parseInt(value, 10) : value,
+        }));
+      }
       if (errors[name]) {
         setErrors((prev) => {
           const next = { ...prev };
@@ -649,6 +760,19 @@ export function QuoteForm() {
         <QuoteSuccess phone={data.phone} />
       ) : (
         <>
+          {/* Form header */}
+          <div className="text-center mb-8">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-forest/8 text-forest rounded-full text-[11px] font-semibold uppercase tracking-[0.12em] mb-4">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Free &amp; No Obligation
+            </span>
+            <h2 className="font-display font-bold text-[28px] text-brown-dark mb-2">
+              Get Your Free Quote
+            </h2>
+            <p className="text-[15px] text-brown-mid leading-[1.6] max-w-[380px] mx-auto">
+              Answer 4 quick questions and a licensed agent will find your best rate from <span className="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span>.
+            </p>
+          </div>
           <ProgressBar step={step} />
           <form onSubmit={handleSubmit} noValidate>
             {step === 1 && <Step1 {...sharedProps} />}

@@ -5,9 +5,10 @@ interface Props {
   title: string;
   subtitle: string;
   breadcrumb?: string;
+  breadcrumbIcon?: string; // inner SVG HTML string
 }
 
-const { title, subtitle, breadcrumb } = Astro.props;
+const { title, subtitle, breadcrumb, breadcrumbIcon } = Astro.props;
 ---
 
 <section class="relative bg-forest-dark py-24 md:py-32 overflow-hidden text-center">
@@ -43,6 +44,7 @@ const { title, subtitle, breadcrumb } = Astro.props;
       {breadcrumb && (
         <nav aria-label="Breadcrumb">
           <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-forest/40 text-sage border border-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em] mb-6">
+            {breadcrumbIcon && <Fragment set:html={breadcrumbIcon} />}
             {breadcrumb}
           </span>
         </nav>

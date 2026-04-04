@@ -3,14 +3,15 @@
 import LogoWordmark from './LogoWordmark.astro';
 ---
 <footer class="bg-[#1A0F00] pt-16 pb-8">
-  <div style="max-width: var(--container-max)" class="mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+  <div style="max-width: var(--container-max)" class="mx-auto px-6 grid grid-cols-1 lg:grid-cols-4 gap-10 mb-12">
+
     <!-- Brand -->
     <div>
       <div class="mb-4">
         <LogoWordmark tone="dark" />
       </div>
       <p class="text-[14px] text-[#C9B99A]/70 leading-[1.85]">
-        Protecting American families with affordable final expense coverage — one policy at a time.
+        Protecting American families with affordable life insurance coverage — one policy at a time.
       </p>
       <div class="flex items-center gap-2 mt-4 px-3 py-2 bg-forest/30 rounded-pill w-fit">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#D97706" aria-hidden="true">
@@ -18,17 +19,44 @@ import LogoWordmark from './LogoWordmark.astro';
         </svg>
         <span class="text-[12px] text-amber font-semibold">Licensed in 49 States</span>
       </div>
+      <!-- Social links -->
+      <div class="flex items-center gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-amber/20 transition-colors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9B99A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-amber/20 transition-colors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9B99A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="X / Twitter" class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-amber/20 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9B99A" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 4l16 16M20 4L4 20"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-full bg-white/8 flex items-center justify-center hover:bg-amber/20 transition-colors">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C9B99A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Quick Links -->
+    <!-- Our Services -->
     <div>
-      <h4 class="text-white font-semibold text-[15px] mb-5">Quick Links</h4>
+      <h4 class="text-white font-semibold text-[15px] mb-5">Our Services</h4>
       <ul class="space-y-3">
         {[
-          { label: 'About Us',    href: '/about' },
-          { label: 'Services',    href: '/services' },
-          { label: 'Get a Quote', href: '/quote' },
-          { label: 'Our Carriers', href: '/#carriers' },
+          { label: 'Whole Life Insurance',       href: '/services/whole-life' },
+          { label: 'Final Expense Insurance',    href: '/services/final-expense' },
+          { label: 'Term Life Insurance',        href: '/services/term-life' },
+          { label: 'Indexed Universal Life (IUL)', href: '/services/iul' },
         ].map(({ label, href }) => (
           <li>
             <a href={href} class="text-[14px] text-[#C9B99A]/70 hover:text-amber transition-colors">
@@ -39,7 +67,28 @@ import LogoWordmark from './LogoWordmark.astro';
       </ul>
     </div>
 
-    <!-- Contact -->
+    <!-- Company -->
+    <div>
+      <h4 class="text-white font-semibold text-[15px] mb-5">Company</h4>
+      <ul class="space-y-3">
+        {[
+          { label: 'About Us',      href: '/about' },
+          { label: 'How It Works',  href: '/#how-it-works' },
+          { label: 'Services',           href: '/services' },
+          { label: 'FAQ',           href: '/faq' },
+          { label: 'Contact',       href: '/contact' },
+          { label: 'Get a Quote',   href: '/quote' },
+        ].map(({ label, href }) => (
+          <li>
+            <a href={href} class="text-[14px] text-[#C9B99A]/70 hover:text-amber transition-colors">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contact Us -->
     <div>
       <h4 class="text-white font-semibold text-[15px] mb-5">Contact Us</h4>
       <ul class="space-y-3">
@@ -47,26 +96,38 @@ import LogoWordmark from './LogoWordmark.astro';
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#2D6A4F" aria-hidden="true">
             <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
           </svg>
-          (888) 000-0000
+          <a href="tel:+18885507159" class="hover:text-amber transition-colors">(888) 550-7159</a>
         </li>
         <li class="flex items-center gap-2 text-[14px] text-[#C9B99A]/70">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+            <polyline points="2,4 12,13 22,4"/>
           </svg>
-          contact@lifeinsurancecoverage.co
+          <a href="mailto:contact@lifeinsurancecoverage.co" class="hover:text-amber transition-colors">contact@lifeinsurancecoverage.co</a>
         </li>
-        <li class="text-[14px] text-[#C9B99A]/70">Mon–Fri 9AM–6PM EST</li>
+        <li class="flex items-start gap-2 text-[14px] text-[#C9B99A]/70">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#2D6A4F" class="shrink-0 mt-0.5" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span>1234 Coverage Blvd,<br/>Suite 100<br/>Atlanta, GA 30301</span>
+        </li>
+        <li class="flex items-center gap-2 text-[14px] text-[#C9B99A]/70">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Mon–Fri 9AM–6PM EST
+        </li>
       </ul>
     </div>
 
-    <!-- Licensing -->
-    <div>
-      <h4 class="text-white font-semibold text-[15px] mb-5">Licensing</h4>
-      <p class="text-[13px] text-[#C9B99A]/60 leading-[1.85] italic">
-        Licensed insurance agency. All policies subject to underwriting. Terms and conditions apply based on carrier selection.
-      </p>
-    </div>
+  </div>
+
+  <!-- Short disclaimer -->
+  <div style="max-width: var(--container-max)" class="mx-auto px-6 mb-6">
+    <p class="text-[12px] text-[#C9B99A]/40 leading-[1.8] text-center">
+      Life Insurance Coverage is an independent insurance agency operated by Life Insurance Coverage LLC, licensed in 49 states (not licensed in New York). We are not an insurance company. All policies are underwritten and issued by our partner insurance carriers. Coverage, terms, and pricing are determined by the issuing carrier. Rates vary based on age, health, gender, state of residence, and carrier. Some policies, particularly guaranteed acceptance plans, may include a graded benefit period of up to 24 months. License verification available upon request.
+    </p>
   </div>
 
   <!-- Bottom bar -->
@@ -74,13 +135,11 @@ import LogoWordmark from './LogoWordmark.astro';
     <p class="text-[13px] text-[#C9B99A]/50">
       © {new Date().getFullYear()} Life Insurance Coverage. All rights reserved.
     </p>
-    <div class="flex gap-6">
-      <a href="/legal/privacy-policy" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">
-        Privacy Policy
-      </a>
-      <a href="/legal/terms" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">
-        Terms of Service
-      </a>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+      <a href="/legal/privacy-policy" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">Privacy Policy</a>
+      <a href="/legal/terms" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">Terms of Service</a>
+      <a href="/legal/policy-support" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">Policy Support</a>
+      <a href="/legal/disclaimer" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">Disclaimer</a>
     </div>
   </div>
 </footer>

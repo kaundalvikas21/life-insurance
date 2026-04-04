@@ -4,29 +4,18 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/blocks/PageHero.astro';
 import TrustBar from '../components/blocks/TrustBar.astro';
 import StatsBar from '../components/blocks/StatsBar.astro';
-import TestimonialsSection from '../components/blocks/TestimonialsSection.astro';
 import BottomCTA from '../components/blocks/BottomCTA.astro';
-import { getCollection } from 'astro:content';
-
-const teamEntries = await getCollection('team');
-
-function getInitials(name: string): string {
-  const parts = name.trim().split(' ');
-  if (parts.length >= 2) {
-    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-  }
-  return parts[0].slice(0, 2).toUpperCase();
-}
 ---
 
 <Layout
-  title="About Us — Patriot American Benefits"
-  description="Learn about Patriot American Benefits. We protect American families with affordable final expense coverage. Licensed agents in 49 states since 2021."
+  title="About Us — Life Insurance Coverage"
+  description="Learn about Life Insurance Coverage. We protect American families with affordable final expense coverage. Licensed agents in 49 states since 2021."
 >
   <PageHero
-    title="About Patriot American Benefits"
+    title="About Life Insurance Coverage"
     subtitle="Protecting American families with affordable final expense coverage since 2021. Licensed agents in 49 states."
     breadcrumb="About Us"
+    breadcrumbIcon='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
   />
 
   <TrustBar />
@@ -36,7 +25,8 @@ function getInitials(name: string): string {
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26A7 7 0 0 1 12 2z"/></svg>
           Why We Exist
         </span>
       </div>
@@ -58,7 +48,7 @@ function getInitials(name: string): string {
         <div class="border-l-4 border-amber pl-8">
           <h3 class="font-display font-bold text-[24px] text-amber-dark mb-5">Our Vision</h3>
           <p class="text-[17px] text-brown-mid leading-[1.85]">
-            A future where every American can protect their family's financial security — regardless of age, health, or income. We achieve this by shopping 13+ carriers to find the best rate for every client.
+            A future where every American can protect their family's financial security — regardless of age, health, or income. We achieve this by shopping <span class="font-extrabold text-amber bg-amber/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">13 carriers</span> to find the best rate for every client.
           </p>
         </div>
       </div>
@@ -77,7 +67,8 @@ function getInitials(name: string): string {
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Our Values
         </span>
       </div>
@@ -136,68 +127,6 @@ function getInitials(name: string): string {
 
   <StatsBar />
 
-  <!-- Team Section -->
-  <section class="bg-cream py-24 border-t border-[#D9D0C2]">
-    <div class="max-w-[1280px] mx-auto px-6">
-      <!-- Label pill -->
-      <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
-          Our Team
-        </span>
-      </div>
-
-      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
-        Meet Your Licensed Advisors
-      </h2>
-
-      <div id="team-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {teamEntries.map((member) => (
-          <div class="bg-white rounded-[20px] p-8" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
-            <!-- Avatar with initials -->
-            <div class="w-20 h-20 bg-forest/10 rounded-full flex items-center justify-center mx-auto">
-              <span class="text-forest font-display font-bold text-[24px]">
-                {getInitials(member.data.name)}
-              </span>
-            </div>
-
-            <!-- Name -->
-            <h3 class="font-display font-bold text-[18px] text-brown-dark mt-4 text-center">
-              {member.data.name}
-            </h3>
-
-            <!-- Role -->
-            <p class="text-[13px] text-forest font-semibold uppercase tracking-[0.08em] mt-1 text-center">
-              {member.data.role}
-            </p>
-
-            <!-- Bio -->
-            <p class="text-[14px] text-brown-mid leading-[1.75] mt-3">
-              {member.data.bio}
-            </p>
-
-            <!-- Bottom stats -->
-            <div class="flex items-center justify-center gap-4 mt-5 pt-5 border-t border-[#E8E0D0]">
-              <div class="flex items-center gap-1.5 text-[12px] text-brown-light">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <span>{member.data.states} states</span>
-              </div>
-              <div class="flex items-center gap-1.5 text-[12px] text-brown-light">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                <span>{member.data.years_exp} yrs exp</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <TestimonialsSection waveBg="cream" />
-
   <BottomCTA />
 </Layout>
 
@@ -206,9 +135,9 @@ function getInitials(name: string): string {
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
   document.addEventListener('astro:page-load', () => {
+    gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Mission & Vision fade-in
       gsap.from('#mission-vision-grid > *', {
         opacity: 0,
         y: 30,
@@ -217,12 +146,11 @@ function getInitials(name: string): string {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: '#mission-vision-grid',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });
 
-      // Core Values stagger
       gsap.from('#values-grid > *', {
         opacity: 0,
         y: 40,
@@ -231,24 +159,11 @@ function getInitials(name: string): string {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#values-grid',
-          start: 'top 80%',
-          once: true,
-        },
-      });
-
-      // Team cards stagger
-      gsap.from('#team-grid > *', {
-        opacity: 0,
-        y: 40,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '#team-grid',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });
     });
   });
 </script>
+

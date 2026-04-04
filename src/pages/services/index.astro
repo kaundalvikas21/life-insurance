@@ -9,13 +9,14 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
 ---
 
 <Layout
-  title="Our Insurance Services — Patriot American Benefits"
-  description="Final expense, term life, and whole life insurance. We shop 13+ carriers to find the right coverage at the best rate for you — at no cost."
+  title="Our Insurance Services — Life Insurance Coverage"
+  description="Final expense, term life, and whole life insurance. We shop 13 carriers to find the right coverage at the best rate for you — at no cost."
 >
   <PageHero
     title="Our Insurance Services"
-    subtitle="We shop 13+ carriers to find the right coverage at the best rate for you — at no cost."
+    subtitle="We shop 13 carriers to find the right coverage at the best rate for you — at no cost."
     breadcrumb="Services"
+    breadcrumbIcon='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>'
   />
 
   <TrustBar />
@@ -25,7 +26,8 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           What We Offer
         </span>
       </div>
@@ -38,239 +40,77 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
         Whether you need final expense protection, income replacement, or permanent coverage — we find the plan that fits your life and budget.
       </p>
 
-      <div id="services-grid" class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- Card 1: Final Expense Insurance (Featured) -->
-        <div class="bg-white border-2 border-forest rounded-[20px] p-8 flex flex-col relative" style="box-shadow: 0 8px 40px rgba(45,106,79,0.15)">
-          <!-- Most Popular Badge -->
-          <div class="mb-5">
-            <span class="inline-block px-3 py-1 bg-amber text-white rounded-pill text-[11px] font-semibold uppercase tracking-[0.08em]">
-              Most Popular
-            </span>
-          </div>
-
-          <!-- Icon -->
-          <div class="w-[42px] h-[42px] flex items-center justify-center mb-5">
-            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="M9 12l2 2 4-4"/>
-            </svg>
-          </div>
-
-          <!-- Title -->
-          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-2">Final Expense Insurance</h3>
-
-          <!-- Price -->
-          <p class="text-forest font-bold text-[24px] mb-1">From $9/mo</p>
-          <p class="text-[13px] text-brown-light mb-4">Ages 45–85</p>
-
-          <!-- Description -->
-          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6">
-            Designed to cover funeral, burial, and end-of-life costs. Protect your family from unexpected financial burden during an already difficult time.
-          </p>
-
-          <!-- Features -->
-          <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'No medical exam required',
-              'Coverage from $5,000 to $50,000',
-              'Day-one coverage available',
-              'Guaranteed issue options available',
-              'Premiums never increase',
-            ].map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[14px] text-brown-mid">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <!-- CTA -->
-          <a
-            href="/services/final-expense"
-            class="block text-center bg-forest hover:bg-forest-dark text-white font-semibold text-[15px] py-3 px-6 rounded-pill transition-colors duration-200"
-          >
-            Learn More →
-          </a>
-        </div>
-
-        <!-- Card 2: Term Life Insurance -->
-        <div class="bg-white rounded-[20px] p-8 flex flex-col" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
-          <!-- Best Value Badge -->
-          <div class="mb-5">
-            <span class="inline-block px-3 py-1 bg-sage text-forest rounded-pill text-[11px] font-semibold uppercase tracking-[0.08em]">
-              Best Value
-            </span>
-          </div>
-
-          <!-- Icon -->
-          <div class="w-[42px] h-[42px] flex items-center justify-center mb-5">
-            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-              <circle cx="12" cy="16" r="2"/>
-            </svg>
-          </div>
-
-          <!-- Title -->
-          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-2">Term Life Insurance</h3>
-
-          <!-- Price -->
-          <p class="text-forest font-bold text-[24px] mb-1">From $15/mo</p>
-          <p class="text-[13px] text-brown-light mb-4">Ages 18–70</p>
-
-          <!-- Description -->
-          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6">
-            Affordable protection for a specific time period. Ideal for income replacement, mortgage protection, and providing for dependents.
-          </p>
-
-          <!-- Features -->
-          <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Coverage from $50,000 to $500,000',
-              '10, 20, or 30-year terms available',
-              'Level premiums throughout term',
-              'Convertible to permanent coverage',
-              'Fast online approval process',
-            ].map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[14px] text-brown-mid">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <!-- CTA -->
-          <a
-            href="/services/term-life"
-            class="block text-center border-2 border-forest text-forest hover:bg-forest hover:text-white font-semibold text-[15px] py-3 px-6 rounded-pill transition-colors duration-200"
-          >
-            Learn More →
-          </a>
-        </div>
-
-        <!-- Card 3: Whole Life Insurance -->
-        <div class="bg-white rounded-[20px] p-8 flex flex-col" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
-          <!-- Long-Term Security Badge -->
-          <div class="mb-5">
-            <span class="inline-block px-3 py-1 bg-cream text-brown-dark rounded-pill text-[11px] font-semibold uppercase tracking-[0.08em]">
-              Long-Term Security
-            </span>
-          </div>
-
-          <!-- Icon -->
-          <div class="w-[42px] h-[42px] flex items-center justify-center mb-5">
-            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- Card: Whole Life Insurance -->
+        <a href="/services/whole-life" class="bg-white rounded-[20px] p-8 flex flex-col border border-[#E8E0D4] hover:border-forest/40 transition-all group text-brown-dark no-underline hover:shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-sage flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
           </div>
-
-          <!-- Title -->
-          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-2">Whole Life Insurance</h3>
-
-          <!-- Price -->
-          <p class="text-forest font-bold text-[24px] mb-1">From $25/mo</p>
-          <p class="text-[13px] text-brown-light mb-4">Ages 0–85</p>
-
-          <!-- Description -->
-          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6">
-            Permanent life insurance that covers you for life. Builds cash value over time that you can borrow against for major expenses.
+          <h3 class="font-display font-bold text-[20px] text-brown-dark mb-3">Whole Life Insurance</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6 flex-1">
+            Permanent coverage that lasts your entire lifetime with guaranteed cash value growth and fixed premiums that never increase.
           </p>
+          <span class="inline-flex items-center gap-1 font-semibold text-[14px] text-forest">
+            Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
 
-          <!-- Features -->
-          <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Lifelong coverage guaranteed',
-              'Builds cash value over time',
-              'Flexible premium payment options',
-              'Dividends possible with some policies',
-              'Can be used for estate planning',
-            ].map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[14px] text-brown-mid">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <!-- CTA -->
-          <a
-            href="/services/whole-life"
-            class="block text-center border-2 border-forest text-forest hover:bg-forest hover:text-white font-semibold text-[15px] py-3 px-6 rounded-pill transition-colors duration-200"
-          >
-            Learn More →
-          </a>
-        </div>
-
-        <!-- Card 4: Indexed Universal Life (IUL) -->
-        <div class="bg-white rounded-[20px] p-8 flex flex-col" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
-          <!-- Growth Potential Badge -->
-          <div class="mb-5">
-            <span class="inline-block px-3 py-1 bg-cream text-brown-dark rounded-pill text-[11px] font-semibold uppercase tracking-[0.08em]">
-              Growth Potential
-            </span>
-          </div>
-
-          <!-- Icon -->
-          <div class="w-[42px] h-[42px] flex items-center justify-center mb-5">
-            <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <path d="M3 9h18"/>
-              <path d="M9 21V9"/>
+        <!-- Card: Final Expense Insurance -->
+        <a href="/services/final-expense" class="bg-white rounded-[20px] p-8 flex flex-col border border-[#E8E0D4] hover:border-forest/40 transition-all group text-brown-dark no-underline hover:shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-sage flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
             </svg>
           </div>
-
-          <!-- Title -->
-          <h3 class="font-display font-bold text-[22px] text-brown-dark mb-2">Indexed Universal Life (IUL)</h3>
-
-          <!-- Price -->
-          <p class="text-forest font-bold text-[24px] mb-1">From $20/mo</p>
-          <p class="text-[13px] text-brown-light mb-4">Ages 20–60</p>
-
-          <!-- Description -->
-          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6">
-            Permanent coverage with market-indexed cash value growth potential and flexible premium options.
+          <h3 class="font-display font-bold text-[20px] text-brown-dark mb-3">Final Expense Insurance</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6 flex-1">
+            Covers funeral and burial costs so your family does not have to come up with the money on short notice.
           </p>
+          <span class="inline-flex items-center gap-1 font-semibold text-[14px] text-forest">
+            Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
 
-          <!-- Features -->
-          <ul class="space-y-3 mb-8 flex-1">
-            {[
-              'Cash value tied to market index',
-              'Premium flexibility',
-              'Death benefit protection',
-              'Tax advantages',
-              'Access to cash value',
-            ].map((feature) => (
-              <li class="flex items-start gap-3">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
-                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
-                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-[14px] text-brown-mid">{feature}</span>
-              </li>
-            ))}
-          </ul>
+        <!-- Card: Term Life Insurance -->
+        <a href="/services/term-life" class="bg-white rounded-[20px] p-8 flex flex-col border border-[#E8E0D4] hover:border-forest/40 transition-all group text-brown-dark no-underline hover:shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-sage flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[20px] text-brown-dark mb-3">Term Life Insurance</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6 flex-1">
+            Maximum coverage at the lowest cost. Protect your family with flexible terms from 10 to 30 years for mortgages, income, and more.
+          </p>
+          <span class="inline-flex items-center gap-1 font-semibold text-[14px] text-forest">
+            Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
 
-          <!-- CTA -->
-          <a
-            href="/services/iul"
-            class="block text-center border-2 border-forest text-forest hover:bg-forest hover:text-white font-semibold text-[15px] py-3 px-6 rounded-pill transition-colors duration-200"
-          >
-            Learn More →
-          </a>
-        </div>
+        <!-- Card: Indexed Universal Life (IUL) -->
+        <a href="/services/iul" class="bg-white rounded-[20px] p-8 flex flex-col border border-[#E8E0D4] hover:border-forest/40 transition-all group text-brown-dark no-underline hover:shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-sage flex items-center justify-center mb-6">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[20px] text-brown-dark mb-3">Indexed Universal Life (IUL)</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8] mb-6 flex-1">
+            Flexible premiums, a death benefit, and cash value tied to market index performance. Built for long-term wealth building.
+          </p>
+          <span class="inline-flex items-center gap-1 font-semibold text-[14px] text-forest">
+            Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </span>
+        </a>
 
       </div>
     </div>
@@ -288,7 +128,8 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
           Our Process
         </span>
       </div>
@@ -372,7 +213,8 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
     <div class="max-w-[1280px] mx-auto px-6">
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           Compare Plans
         </span>
       </div>
@@ -381,11 +223,12 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
         Side-by-Side Comparison
       </h2>
 
+      <p class="text-center text-[13px] text-brown-light mb-3 md:hidden">Swipe to compare →</p>
       <div class="max-w-[1000px] mx-auto overflow-x-auto">
-        <table class="w-full border-collapse rounded-[16px] overflow-hidden" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+        <table class="w-full border-collapse rounded-[16px] overflow-hidden" style="min-width: 560px; box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
           <thead>
             <tr>
-              <th class="bg-cream py-4 px-6 text-left"></th>
+              <th class="bg-forest-dark text-white font-display font-semibold text-[15px] py-4 px-6 text-center">Feature</th>
               <th class="bg-forest-dark text-white font-display font-semibold text-[15px] py-4 px-6 text-center">Final Expense</th>
               <th class="bg-forest-dark text-white font-display font-semibold text-[15px] py-4 px-6 text-center">Term Life</th>
               <th class="bg-forest-dark text-white font-display font-semibold text-[15px] py-4 px-6 text-center">Whole Life</th>
@@ -519,21 +362,6 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      // Services cards stagger
-      gsap.from('#services-grid > *', {
-        opacity: 0,
-        y: 40,
-        duration: 0.7,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '#services-grid',
-          start: 'top 80%',
-          once: true,
-        },
-      });
-
-      // Process steps stagger
       gsap.from('#process-grid > *', {
         opacity: 0,
         y: 30,
@@ -542,10 +370,11 @@ import BottomCTA from '../../components/blocks/BottomCTA.astro';
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#process-grid',
-          start: 'top 80%',
+          start: 'top 95%',
           once: true,
         },
       });
     });
   });
 </script>
+

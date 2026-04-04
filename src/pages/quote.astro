@@ -4,19 +4,20 @@ export const prerender = true;
 
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/blocks/PageHero.astro';
-import TestimonialsSection from '../components/blocks/TestimonialsSection.astro';
+import StatsBar from '../components/blocks/StatsBar.astro';
 import BottomCTA from '../components/blocks/BottomCTA.astro';
 import QuoteForm from '../components/interactive/QuoteForm';
 ---
 
 <Layout
-  title="Get Your Free Quote — Patriot American Benefits"
-  description="Request a free life insurance quote in about 2 minutes. No obligation, no pressure. We compare rates from 13+ carriers to find your best option."
+  title="Get Your Free Quote — Life Insurance Coverage"
+  description="Request a free life insurance quote in about 2 minutes. No obligation, no pressure. We compare rates from 13 carriers to find your best option."
 >
   <PageHero
     title="Get Your Free Quote"
-    subtitle="No obligation. No pressure. Just the best rate from 13+ carriers in about 2 minutes."
+    subtitle="No obligation. No pressure. Just the best rate from 13 carriers in about 2 minutes."
     breadcrumb="Free Quote"
+    breadcrumbIcon='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
   />
 
   <!-- Quote Form Section -->
@@ -39,7 +40,8 @@ import QuoteForm from '../components/interactive/QuoteForm';
 
       <!-- Label pill -->
       <div class="flex justify-center mb-5">
-        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+        <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           Why Choose Us
         </span>
       </div>
@@ -96,7 +98,7 @@ import QuoteForm from '../components/interactive/QuoteForm';
     </div>
   </section>
 
-  <TestimonialsSection waveBg="sage" />
+  <StatsBar />
 
   <BottomCTA />
 </Layout>
@@ -107,7 +109,6 @@ import QuoteForm from '../components/interactive/QuoteForm';
 
   document.addEventListener('astro:page-load', () => {
     gsap.registerPlugin(ScrollTrigger);
-
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.from('#why-quote-grid > *', {
@@ -118,7 +119,7 @@ import QuoteForm from '../components/interactive/QuoteForm';
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '#why-quote-grid',
-          start: 'top 85%',
+          start: 'top 95%',
           once: true,
         },
       });

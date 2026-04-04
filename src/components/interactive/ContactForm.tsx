@@ -8,6 +8,7 @@ interface FormData {
   state: string;
   product: string;
   message: string;
+  consent: boolean;
 }
 
 const US_STATES = [
@@ -16,7 +17,7 @@ const US_STATES = [
   'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
   'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
   'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
-  'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+  'New Hampshire', 'New Jersey', 'New Mexico',
   'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
   'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
   'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
@@ -30,6 +31,7 @@ const INITIAL_FORM: FormData = {
   state: '',
   product: '',
   message: '',
+  consent: false,
 };
 
 function validate(data: FormData): Record<string, string> {
@@ -50,6 +52,9 @@ function validate(data: FormData): Record<string, string> {
   if (!data.product) {
     errs.product = 'Please select a product interest.';
   }
+  if (!data.consent) {
+    errs.consent = 'You must agree to be contacted to submit.';
+  }
 
   return errs;
 }
@@ -61,9 +66,21 @@ export function ContactForm() {
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      const { name, value } = e.target;
+      const { name } = e.target;
+      if (e.target.type === 'checkbox') {
+        const checked = (e.target as HTMLInputElement).checked;
+        setFormData((prev) => ({ ...prev, [name]: checked }));
+        if (errors[name]) {
+          setErrors((prev) => {
+            const next = { ...prev };
+            delete next[name];
+            return next;
+          });
+        }
+        return;
+      }
+      const { value } = e.target;
       setFormData((prev) => ({ ...prev, [name]: value }));
-      // Clear error on change
       if (errors[name]) {
         setErrors((prev) => {
           const next = { ...prev };
@@ -282,9 +299,9 @@ export function ContactForm() {
       </div>
 
       {/* Message */}
-      <div className="mb-7">
+      <div className="mb-6">
         <label htmlFor="message" className="block text-[14px] font-semibold text-brown-dark mb-2">
-          Message <span className="text-brown-light font-normal">(optional)</span>
+          Message
         </label>
         <textarea
           id="message"
@@ -295,6 +312,27 @@ export function ContactForm() {
           placeholder="Anything you'd like us to know before we call…"
           className={inputNormal}
         />
+      </div>
+
+      {/* Consent Checkbox */}
+      <div className="mb-6">
+        <label className="flex items-start gap-3 cursor-pointer">
+          <input
+            type="checkbox"
+            name="consent"
+            checked={formData.consent}
+            onChange={handleChange}
+            className="mt-1 w-4 h-4 flex-shrink-0"
+            style={{ accentColor: '#2D6A4F' }}
+          />
+          <span className="text-[13px] text-brown-mid leading-[1.6]">
+            I agree to be contacted by a licensed agent regarding insurance options. I understand this is not a purchase commitment.
+            <span className="text-red-500"> *</span>
+          </span>
+        </label>
+        {errors.consent && (
+          <p className="text-[13px] text-red-500 mt-2 ml-7">{errors.consent}</p>
+        )}
       </div>
 
       {/* Submit */}

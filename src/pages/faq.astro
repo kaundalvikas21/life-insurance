@@ -5,38 +5,144 @@ export const prerender = true;
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/blocks/PageHero.astro';
 import BottomCTA from '../components/blocks/BottomCTA.astro';
-import FAQPage from '../components/interactive/FAQPage';
-import { getCollection } from 'astro:content';
+import FAQAccordion from '../components/interactive/FAQAccordion';
 
-const faqEntries = await getCollection('faqs');
-const faqs = faqEntries.map((e) => e.data);
+// ── Product FAQ data ──────────────────────────────────────────────────────────
+const productFAQs = [
+  {
+    slug: 'final-expense',
+    title: 'Final Expense Insurance',
+    description: 'Affordable burial coverage with no medical exam required — starting from $9/mo.',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>',
+    faqs: [
+      { id: 'fe-1', question: 'Do I need a medical exam?', answer: 'No. Most final expense plans use simplified underwriting with a health questionnaire instead of a medical exam.', category: 'Application' },
+      { id: 'fe-2', question: 'How quickly does coverage start?', answer: 'Many plans offer day-one coverage, meaning your full benefit is available immediately upon approval.', category: 'Coverage' },
+      { id: 'fe-3', question: 'What happens if I outlive the policy?', answer: 'With whole life final expense, your coverage lasts for your entire lifetime as long as premiums are paid.', category: 'Coverage' },
+      { id: 'fe-4', question: 'Can I cancel the policy?', answer: 'You can cancel, but you may receive a reduced surrender value if you cancel early.', category: 'Coverage' },
+      { id: 'fe-5', question: 'What is the coverage amount range?', answer: 'Final expense policies typically offer coverage between $5,000 and $50,000 — enough to cover funeral costs, medical bills, and other end-of-life expenses.', category: 'Coverage' },
+    ],
+  },
+  {
+    slug: 'term-life',
+    title: 'Term Life Insurance',
+    description: 'Maximum coverage at the lowest monthly cost — protecting your family for 10–30 years.',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+    faqs: [
+      { id: 'tl-1', question: 'What happens when my term ends?', answer: 'You can renew the policy (at a higher rate), convert to permanent coverage, or let it lapse.', category: 'Coverage' },
+      { id: 'tl-2', question: 'Is a medical exam required?', answer: 'It depends on your age and coverage amount. Many applicants under age 50 with coverage under $100,000 can skip the exam.', category: 'Application' },
+      { id: 'tl-3', question: 'Can I convert to permanent coverage?', answer: 'Yes, most term policies are convertible to whole life without a medical exam during the conversion period.', category: 'Coverage' },
+      { id: 'tl-4', question: 'What if my health changes during the term?', answer: 'Your premiums and coverage remain the same regardless of health changes during the term.', category: 'Coverage' },
+      { id: 'tl-5', question: 'How much term life coverage do I need?', answer: 'A common rule of thumb is 10–12x your annual income. Consider your mortgage, debts, income replacement needs, and children\'s education costs when deciding.', category: 'Coverage' },
+    ],
+  },
+  {
+    slug: 'whole-life',
+    title: 'Whole Life Insurance',
+    description: 'Permanent protection with guaranteed cash value you can borrow against while living.',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    faqs: [
+      { id: 'wl-1', question: 'What is cash value?', answer: 'Cash value is a savings component that grows over time. You can borrow against it tax-free or surrender the policy for the cash value.', category: 'Coverage' },
+      { id: 'wl-2', question: 'How are dividends paid?', answer: 'Participating whole life policies may pay dividends annually, which can be taken as cash, used to pay premiums, or left to grow.', category: 'Coverage' },
+      { id: 'wl-3', question: 'Can I access the cash value?', answer: 'Yes, you can take policy loans against the cash value tax-free, or make partial withdrawals.', category: 'Coverage' },
+      { id: 'wl-4', question: 'What happens if I stop paying premiums?', answer: 'If there\'s sufficient cash value, the policy can use it to pay premiums (paid-up option). Otherwise, the policy will lapse.', category: 'Coverage' },
+      { id: 'wl-5', question: 'Is whole life good for estate planning?', answer: 'Yes. The death benefit passes to beneficiaries income tax-free and does not go through probate, making it an efficient wealth transfer tool.', category: 'Coverage' },
+    ],
+  },
+  {
+    slug: 'iul',
+    title: 'Indexed Universal Life (IUL)',
+    description: 'Market-linked growth potential with lifetime coverage and flexible premium options.',
+    icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>',
+    faqs: [
+      { id: 'iul-1', question: 'How is IUL different from traditional whole life?', answer: 'IUL cash value is tied to a market index rather than a fixed rate, offering higher growth potential but also more variability.', category: 'Coverage' },
+      { id: 'iul-2', question: 'What happens if the market crashes?', answer: 'IUL policies typically have a floor (0% or 1–2%) so your cash value won\'t go negative, and your death benefit remains protected.', category: 'Coverage' },
+      { id: 'iul-3', question: 'Can I change my premium?', answer: 'Yes, IUL offers flexible premiums between a minimum and maximum amount. You can pay more to build cash value or less to fit your budget.', category: 'Costs' },
+      { id: 'iul-4', question: 'What are the tax advantages?', answer: 'You can borrow against your cash value tax-free, and withdrawals up to your basis are tax-free. Consult a tax professional for details.', category: 'Coverage' },
+      { id: 'iul-5', question: 'Who is IUL best suited for?', answer: 'IUL is best for individuals aged 20–55 who want permanent coverage, have a longer time horizon, and want the potential for market-linked cash value growth alongside retirement income planning.', category: 'Coverage' },
+    ],
+  },
+];
 ---
 
 <Layout
-  title="FAQ — Patriot American Benefits"
-  description="Frequently asked questions about final expense and life insurance coverage, costs, applications, and claims. Get clear answers from licensed advisors."
+  title="FAQ — Life Insurance Coverage"
+  description="Frequently asked questions about final expense, term life, whole life, and IUL insurance. Get clear answers from licensed advisors."
 >
   <PageHero
     title="Frequently Asked Questions"
-    subtitle="Clear answers to the questions we hear most. Still have questions? Call us."
+    subtitle="Clear answers to the questions we hear most — organized by product type."
     breadcrumb="FAQ"
+    breadcrumbIcon='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
   />
 
-  <!-- Main FAQ section -->
+  <!-- Product FAQ Sections -->
   <section class="bg-cream py-24">
     <div class="max-w-[1280px] mx-auto px-6">
-      <!-- Section heading -->
-      <div class="text-center mb-12">
-        <h2 class="font-display font-bold text-[clamp(28px,3.5vw,42px)] text-brown-dark mb-4">
-          Find Your Answer
-        </h2>
-        <p class="text-[17px] text-brown-mid max-w-[560px] mx-auto leading-[1.8]">
-          Browse by category or read through all questions below.
+
+      <div class="max-w-[860px] mx-auto">
+
+      {productFAQs.map((product, idx) => (
+        <div class={idx > 0 ? 'mt-20 pt-20 border-t border-[#E8E0D4]' : ''} id={product.slug}>
+
+          <!-- Product header -->
+          <div class="mb-8">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em] mb-4">
+              <Fragment set:html={product.icon} />
+              {product.title}
+            </span>
+            <h2 class="font-display font-bold text-[clamp(24px,3vw,32px)] text-brown-dark mb-2">
+              {product.title}
+            </h2>
+            <p class="text-[16px] text-brown-mid leading-[1.7]">
+              {product.description}
+            </p>
+          </div>
+
+          <!-- FAQ Accordion -->
+          <FAQAccordion faqs={product.faqs} showHeading={false} showCTA={false} client:visible />
+
+          <!-- CTA -->
+          <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a
+              href="/quote"
+              class="inline-flex items-center gap-2 bg-forest hover:bg-forest-dark text-white font-bold text-[15px] px-6 py-3 rounded-pill transition-colors"
+            >
+              Get a Free {product.title} Quote
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href={`/services/${product.slug}`} class="text-[14px] text-forest font-semibold hover:text-forest-dark transition-colors">
+              Learn more about {product.title} →
+            </a>
+          </div>
+
+        </div>
+      ))}
+
+      </div><!-- /max-w-[860px] -->
+
+      <!-- Contact Us CTA -->
+      <div class="mt-20 pt-16 border-t border-[#E8E0D4] text-center">
+        <p class="text-[17px] text-brown-mid mb-6 max-w-[480px] mx-auto leading-[1.7]">
+          Still have questions? Our licensed advisors are ready to help — at no cost to you.
         </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 bg-forest hover:bg-forest-dark text-white font-bold text-[15px] px-7 py-3.5 rounded-pill transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Contact Us
+          </a>
+          <a
+            href="tel:+18885507159"
+            class="inline-flex items-center gap-2 border-2 border-forest text-forest hover:bg-forest hover:text-white font-semibold text-[15px] px-7 py-3.5 rounded-pill transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.72 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.64 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call (888) 550-7159
+          </a>
+        </div>
       </div>
 
-      <!-- FAQPage interactive component -->
-      <FAQPage faqs={faqs} client:load />
     </div>
   </section>
 
