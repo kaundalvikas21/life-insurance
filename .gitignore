@@ -40,3 +40,5 @@ pnpm-debug.log*
 .stitch/designs/variant-accessible.html
 .stitch/designs/variant-swiss.html
 .stitch/designs/variant-biophilic.html
+# Local Netlify folder
+.netlify

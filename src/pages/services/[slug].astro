@@ -1,20 +1,8 @@
 ---
 // src/pages/services/[slug].astro
-export const prerender = true;
-
 import Layout from '../../layouts/Layout.astro';
 import BottomCTA from '../../components/blocks/BottomCTA.astro';
 import FAQAccordion from '../../components/interactive/FAQAccordion.tsx';
-
-// Get all service slugs
-export function getStaticPaths() {
-  return [
-    { params: { slug: 'final-expense' } },
-    { params: { slug: 'term-life' } },
-    { params: { slug: 'whole-life' } },
-    { params: { slug: 'iul' } },
-  ];
-}
 
 // Service data
 const services = {
