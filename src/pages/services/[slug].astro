@@ -26,11 +26,12 @@ const services = {
     ageRange: 'Ages 45–85',
     description: 'Final expense insurance is designed to cover funeral costs, medical bills, and other end-of-life expenses. Your family receives the death benefit tax-free and can use it immediately for your burial expenses.',
     features: [
-      { icon: 'shield', title: 'No Medical Exam', description: 'Most plans require only a health questionnaire' },
-      { icon: 'clock', title: 'Fast Approval', description: 'Many applicants get same-day coverage' },
-      { icon: 'dollar', title: 'Fixed Premiums', description: 'Your rate never increases as you age' },
-      { icon: 'heart', title: 'Guaranteed Issue', description: 'Options available even with health conditions' },
-      { icon: 'check', title: 'Tax-Free Benefit', description: 'Death benefit paid to your beneficiaries tax-free' },
+      { icon: 'shield', title: 'No Medical Exam', description: 'Most plans qualify you with a short yes/no health questionnaire. No labs, no doctor visit required.' },
+      { icon: 'clock', title: 'Same-Day Coverage', description: 'Many applicants are approved and fully covered the same day they apply.' },
+      { icon: 'dollar', title: 'Fixed Premiums', description: 'Your rate is locked in at enrollment and never increases, even as you get older or your health changes.' },
+      { icon: 'heart', title: 'Guaranteed Issue', description: 'We work with carriers that accept applicants with pre-existing conditions, including those previously declined.' },
+      { icon: 'check', title: 'Tax-Free Payout', description: 'The death benefit is paid directly to your beneficiaries, income-tax-free, with no probate delays.' },
+      { icon: 'piggybank', title: 'Builds Cash Value', description: 'Some whole life final expense plans build a cash reserve over time that you can borrow against while living.' },
     ],
     benefits: [
       'Coverage from $5,000 to $50,000',
@@ -60,11 +61,12 @@ const services = {
     ageRange: 'Ages 18–70',
     description: 'Term life insurance provides coverage for a specific period (10, 20, or 30 years). It offers the highest death benefit for the lowest monthly premium.',
     features: [
-      { icon: 'calendar', title: 'Flexible Terms', description: 'Choose 10, 20, or 30-year terms' },
-      { icon: 'trending', title: 'Level Premiums', description: 'Your payment stays the same for the entire term' },
-      { icon: 'refresh', title: 'Convertible', description: 'Can convert to permanent coverage later' },
-      { icon: 'check', title: 'Fast Approval', description: 'Apply online in minutes' },
-      { icon: 'shield', title: 'Large Coverage', description: 'Up to $500,000 available' },
+      { icon: 'calendar', title: 'Flexible Terms', description: 'Choose a 10, 20, or 30-year term to match your mortgage payoff window, income replacement need, or other time-limited goal.' },
+      { icon: 'trending', title: 'Level Premiums', description: 'Your monthly payment stays the same for the entire term — no surprise increases midway through.' },
+      { icon: 'refresh', title: 'Convertible', description: 'Most term policies let you convert to permanent coverage later without submitting to a new medical exam.' },
+      { icon: 'lock', title: 'Fast Approval', description: 'Many applicants under 50 with coverage under $250,000 are approved within 24–48 hours of applying.' },
+      { icon: 'star', title: 'High Coverage', description: 'Term life offers the most death benefit per dollar — up to $500,000 in coverage starting around $15/month.' },
+      { icon: 'users', title: 'Renewable', description: 'When your term ends, most policies allow you to renew so your family doesn\'t lose coverage unexpectedly.' },
     ],
     benefits: [
       'Coverage from $50,000 to $500,000',
@@ -94,11 +96,12 @@ const services = {
     ageRange: 'Ages 0–85',
     description: 'Whole life insurance provides permanent coverage and accumulates cash value that you can borrow against while living. It combines protection with a savings component.',
     features: [
-      { icon: 'home', title: 'Lifetime Coverage', description: 'Coverage lasts your entire life' },
-      { icon: 'piggybank', title: 'Cash Value', description: 'Builds cash value over time you can access' },
-      { icon: 'chart', title: 'Dividends', description: 'May earn dividends on participating policies' },
-      { icon: 'shield', title: 'Estate Planning', description: 'Excellent tool for transferring wealth' },
-      { icon: 'check', title: 'Fixed Premiums', description: 'Your premium never increases' },
+      { icon: 'home', title: 'Lifetime Coverage', description: 'Unlike term, whole life never expires. Coverage stays in force for your entire life as long as premiums are paid.' },
+      { icon: 'layers', title: 'Cash Value', description: 'A portion of every premium builds tax-deferred cash value you can borrow against or surrender for cash.' },
+      { icon: 'chart', title: 'Dividends', description: 'Participating whole life policies may pay annual dividends that can reduce your premiums or compound inside the policy.' },
+      { icon: 'leaf', title: 'Tax-Free Transfer', description: 'The death benefit passes to your beneficiaries income-tax-free and bypasses the probate process entirely.' },
+      { icon: 'zap', title: 'Fixed Premiums', description: 'Your premium is set at enrollment and never changes, making long-term budgeting predictable and straightforward.' },
+      { icon: 'gift', title: 'Paid-Up Option', description: 'Some whole life plans allow you to stop paying premiums entirely once the policy is fully funded.' },
     ],
     benefits: [
       'Coverage from $10,000 to $500,000',
@@ -128,11 +131,12 @@ const services = {
     ageRange: 'Ages 20–60',
     description: 'Indexed universal life combines permanent death benefit protection with cash value that tracks a market index (like S&P 500). Offers growth potential with downside protection.',
     features: [
-      { icon: 'chart', title: 'Market Growth', description: 'Cash value tied to market index performance' },
-      { icon: 'sliders', title: 'Flexible Premiums', description: 'Adjust premiums between minimum and maximum' },
-      { icon: 'shield', title: 'Death Benefit', description: 'Permanent death benefit protection' },
-      { icon: 'arrow-up', title: 'Tax Advantages', description: 'Tax-free loans and withdrawals' },
-      { icon: 'bank', title: 'Cash Access', description: 'Access cash value for any purpose' },
+      { icon: 'target', title: 'Market-Linked Growth', description: 'Cash value earns interest based on a market index like the S&P 500, without directly investing in the market.' },
+      { icon: 'award', title: 'Downside Protection', description: 'A 0% floor means your cash value can\'t decrease due to a market downturn — growth only, no losses.' },
+      { icon: 'sliders', title: 'Flexible Premiums', description: 'Pay anywhere between the minimum and maximum premium each year, adjusting as your financial situation changes.' },
+      { icon: 'arrowup', title: 'Tax-Free Loans', description: 'You can borrow against your accumulated cash value at any time without triggering a taxable event.' },
+      { icon: 'phone', title: 'Permanent Coverage', description: 'The death benefit remains in place for your entire life, as long as sufficient premiums are maintained.' },
+      { icon: 'bank', title: 'Retirement Income', description: 'Many clients use IUL cash value as a tax-advantaged income stream to supplement retirement savings.' },
     ],
     benefits: [
       'Growth potential tied to market indexes',
@@ -179,6 +183,16 @@ const icons: Record<string, string> = {
   arrowup: 'M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z',
   bank: 'M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z',
   sliders: 'M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z',
+  lock: 'M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z',
+  star: 'M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z',
+  users: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
+  layers: 'M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z',
+  leaf: 'M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3C8.21 20.22 10.05 21 12 21a9 9 0 0 0 9-9V2H17v6z',
+  zap: 'M7 2v11h3v9l7-12h-4l4-8z',
+  gift: 'M20 6h-2.18c.07-.31.18-.62.18-.95C18 3.34 16.66 2 15 2c-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68C10.96 2.54 10.05 2 9 2 7.34 2 6 3.34 6 5c0 .33.11.64.18.95H4c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h.08L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2l.92-8H22c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z',
+  target: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-12c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z',
+  award: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+  phone: 'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z',
 };
 ---
 
@@ -289,16 +303,16 @@ const icons: Record<string, string> = {
         Why Choose {service.title}
       </h2>
 
-      <div id="benefits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div id="benefits-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {service.features.map((feature) => (
-          <div class="bg-white rounded-[20px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
-            <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-4">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <div class="bg-white rounded-[20px] p-7 border-l-[3px] border-forest/30" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+            <div class="w-14 h-14 bg-sage rounded-xl flex items-center justify-center mb-5">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d={icons[feature.icon] || icons.check} />
               </svg>
             </div>
-            <h3 class="font-display font-semibold text-[18px] text-brown-dark mb-2">{feature.title}</h3>
-            <p class="text-[14px] text-brown-mid leading-[1.7]">{feature.description}</p>
+            <h3 class="font-display font-bold text-[17px] text-brown-dark mb-2">{feature.title}</h3>
+            <p class="text-[14px] text-brown-mid leading-[1.75]">{feature.description}</p>
           </div>
         ))}
       </div>
@@ -511,13 +525,13 @@ const icons: Record<string, string> = {
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.from('#benefits-grid > *', {
         opacity: 0,
-        y: 40,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power3.out',
+        y: 28,
+        duration: 0.55,
+        stagger: 0.08,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: '#benefits-grid',
-          start: 'top 95%',
+          start: 'top 78%',
           once: true,
         },
       });

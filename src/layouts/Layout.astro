@@ -65,5 +65,14 @@ const {
 
   document.addEventListener('astro:page-load', () => {
     ScrollTrigger.refresh();
+
+    // Scroll to hash anchor after View Transitions navigation
+    const hash = window.location.hash;
+    if (hash) {
+      const el = document.querySelector(hash);
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+      }
+    }
   });
 </script>
