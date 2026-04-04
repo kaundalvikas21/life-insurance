@@ -41,10 +41,8 @@ export default function MobileMenu({ links, phone }: Props) {
               className="inline-flex flex-col leading-none no-underline select-none"
               aria-label="LifeInsuranceCoverage.co home"
             >
-              <span className="inline-flex items-center gap-2 font-display uppercase tracking-[0.24em] font-semibold text-[9px] text-[#E9DCC6]/80">
-                <span className="h-[1px] w-[10px] rounded-full bg-[#C9B99A]/45" aria-hidden="true" />
+              <span className="font-display uppercase tracking-[0.24em] font-semibold text-[9px] text-[#E9DCC6]/80">
                 Life Insurance
-                <span className="h-[1px] w-[10px] rounded-full bg-[#C9B99A]/45" aria-hidden="true" />
               </span>
               <span className="inline-flex items-end mt-[2px]">
                 <span className="font-display font-black tracking-[-0.022em] text-[20px] text-white">

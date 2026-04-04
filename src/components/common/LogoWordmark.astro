@@ -9,7 +9,6 @@ const { href = '/', tone = 'light' } = Astro.props;
 const isDark = tone === 'dark';
 
 const topTextTone = isDark ? 'text-[#E9DCC6]/82' : 'text-brown-mid';
-const topRuleTone = isDark ? 'bg-[#C9B99A]/45' : 'bg-brown-mid/40';
 const wordmarkTone = isDark ? 'text-white' : 'text-forest-dark';
 const accentTone = isDark ? 'bg-[#D8C7AA]' : 'bg-amber/70';
 const baselineTone = isDark ? 'bg-[#C9B99A]/45' : 'bg-forest/30';
@@ -25,18 +24,10 @@ const ringTone = isDark ? 'focus-visible:ring-[#C9B99A]/45' : 'focus-visible:rin
   aria-label="LifeInsuranceCoverage.co home"
 >
   <span class:list={[
-    'inline-flex items-center gap-2 font-display uppercase tracking-[0.24em] font-semibold text-[9px] sm:text-[10px]',
+    'font-display uppercase tracking-[0.24em] font-semibold text-[9px] sm:text-[10px]',
     topTextTone,
   ]}>
-    <span class:list={[
-      'h-[1px] w-[10px] rounded-pill transition-all duration-300 ease-out group-hover:w-[14px]',
-      topRuleTone,
-    ]} aria-hidden="true" />
     Life Insurance
-    <span class:list={[
-      'h-[1px] w-[10px] rounded-pill transition-all duration-300 ease-out group-hover:w-[14px]',
-      topRuleTone,
-    ]} aria-hidden="true" />
   </span>
 
   <span class="inline-flex items-end mt-[2px]">
