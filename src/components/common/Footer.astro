@@ -1,13 +1,14 @@
 ---
 // src/components/common/Footer.astro
+import LogoWordmark from './LogoWordmark.astro';
 ---
 <footer class="bg-[#1A0F00] pt-16 pb-8">
   <div style="max-width: var(--container-max)" class="mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
     <!-- Brand -->
     <div>
-      <span class="font-display font-bold text-[20px] text-white block mb-4">
-        Life Insurance
-      </span>
+      <div class="mb-4">
+        <LogoWordmark tone="dark" />
+      </div>
       <p class="text-[14px] text-[#C9B99A]/70 leading-[1.85]">
         Protecting American families with affordable final expense coverage — one policy at a time.
       </p>
@@ -53,7 +54,7 @@
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
           </svg>
-          contact@lifeinsurance.com
+          contact@lifeinsurancecoverage.co
         </li>
         <li class="text-[14px] text-[#C9B99A]/70">Mon–Fri 9AM–6PM EST</li>
       </ul>
@@ -71,7 +72,7 @@
   <!-- Bottom bar -->
   <div style="max-width: var(--container-max)" class="mx-auto px-6 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3">
     <p class="text-[13px] text-[#C9B99A]/50">
-      © {new Date().getFullYear()} Life Insurance. All rights reserved.
+      © {new Date().getFullYear()} Life Insurance Coverage. All rights reserved.
     </p>
     <div class="flex gap-6">
       <a href="/legal/privacy-policy" class="text-[13px] text-[#C9B99A]/50 hover:text-amber transition-colors">

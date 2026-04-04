@@ -1,5 +1,7 @@
 ---
 // src/components/blocks/Hero.astro
+import { Image } from 'astro:assets';
+import heroCouple from '../../assets/images/hero-couple.jpg';
 ---
 <section class="relative pt-[136px] pb-24 bg-cream overflow-hidden">
   <!-- Organic blob decorations -->
@@ -72,14 +74,15 @@
     <!-- Image -->
     <div class="relative" id="hero-image">
       <div class="absolute -inset-2 bg-forest/10 rounded-3xl blur-xl"></div>
-      <img
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmBwi_lI9b2hgLANJedzqtgh7YBY57twQ6nlrsTuNOOxBbIb3hH6I6tG17bloxNPU-pakkqNEASNP04qTpVhUo3xO8-UluH17xqRvpCSnLCrr2PCKv8nLj63c0lpGQtRrr93paCY4KZM8DeVTP53C_ElXjlwsSCLL8S6Zsv5kRkpmQSAjhIySdtPJEnD-JWAsQ3ANc2f_ckYd_zMxSd4V-bRukdH7uSOyPlS-UdA3sTq8ESPF67DBuIcYlAjDTv5UbnJfN86ZBBPM"
+      <Image
+        src={heroCouple}
         alt="A smiling senior couple relaxing at home, feeling secure and protected"
-        width="600"
-        height="450"
+        width={600}
+        height={450}
         loading="eager"
         class="relative rounded-3xl w-full object-cover"
-        style="aspect-ratio:4/3;box-shadow:0 16px 48px rgba(93,70,40,0.16)"
+        style:aspect-ratio="4/3"
+        style:box-shadow="0 16px 48px rgba(93,70,40,0.16)"
       />
     </div>
   </div>

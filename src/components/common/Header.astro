@@ -1,6 +1,7 @@
 ---
 // src/components/common/Header.astro
 import MobileMenu from '../interactive/MobileMenu';
+import LogoWordmark from './LogoWordmark.astro';
 
 const links = [
   { label: 'Services',    href: '/services' },
@@ -17,9 +18,7 @@ const links = [
 >
   <div style="max-width: var(--container-max)" class="mx-auto px-6 flex items-center justify-between h-[72px]">
     <!-- Logo -->
-    <a href="/" class="font-display font-bold text-[22px] text-forest no-underline">
-      Life Insurance
-    </a>
+    <LogoWordmark href="/" />
 
     <!-- Desktop nav -->
     <nav aria-label="Main navigation" class="hidden md:flex items-center gap-8">

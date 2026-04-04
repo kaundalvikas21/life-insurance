@@ -1,0 +1,40 @@
+---
+// src/components/common/LogoWordmark.astro
+interface Props {
+  href?: string;
+  tone?: 'light' | 'dark';
+}
+
+const { href = '/', tone = 'light' } = Astro.props;
+const isDark = tone === 'dark';
+---
+
+<a
+  href={href}
+  class="inline-flex flex-col gap-[3px] leading-none no-underline"
+  aria-label="LifeInsuranceCoverage.co home"
+>
+  <span class:list={[
+    'font-display uppercase tracking-[0.26em] font-semibold text-[9px] sm:text-[10px]',
+    isDark ? 'text-[#E9DCC6]/80' : 'text-brown-mid',
+  ]}>
+    Life Insurance
+  </span>
+
+  <span class="inline-flex items-end">
+    <span class:list={[
+      'font-display font-extrabold tracking-[-0.01em] text-[20px] sm:text-[22px]',
+      isDark ? 'text-white' : 'text-forest-dark',
+    ]}>
+      Coverage
+    </span>
+  </span>
+
+  <span
+    class:list={[
+      'h-[2px] w-[120px] rounded-pill',
+      isDark ? 'bg-[#C9B99A]/50' : 'bg-forest/30',
+    ]}
+    aria-hidden="true"
+  />
+</a>
