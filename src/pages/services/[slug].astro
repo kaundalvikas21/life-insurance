@@ -1,0 +1,461 @@
+---
+// src/pages/services/[slug].astro
+export const prerender = true;
+
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/blocks/PageHero.astro';
+import BottomCTA from '../../components/blocks/BottomCTA.astro';
+import FAQAccordion from '../../components/interactive/FAQAccordion.tsx';
+
+// Get all service slugs
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'final-expense' } },
+    { params: { slug: 'term-life' } },
+    { params: { slug: 'whole-life' } },
+    { params: { slug: 'iul' } },
+  ];
+}
+
+// Service data
+const services = {
+  'final-expense': {
+    title: 'Final Expense Insurance',
+    headline: 'Protect Your Family from Final Expense Burden',
+    tagline: 'Affordable burial coverage without the medical exam',
+    priceFrom: '$9/mo',
+    ageRange: 'Ages 45–85',
+    description: 'Final expense insurance is designed to cover funeral costs, medical bills, and other end-of-life expenses. Your family receives the death benefit tax-free and can use it immediately for your burial expenses.',
+    features: [
+      { icon: 'shield', title: 'No Medical Exam', description: 'Most plans require only a health questionnaire' },
+      { icon: 'clock', title: 'Fast Approval', description: 'Many applicants get same-day coverage' },
+      { icon: 'dollar', title: 'Fixed Premiums', description: 'Your rate never increases as you age' },
+      { icon: 'heart', title: 'Guaranteed Issue', description: 'Options available even with health conditions' },
+      { icon: 'check', title: 'Tax-Free Benefit', description: 'Death benefit paid to your beneficiaries tax-free' },
+    ],
+    benefits: [
+      'Coverage from $5,000 to $50,000',
+      'No waiting periods on most plans',
+      'Builds cash value in some plans',
+      'Simple application process',
+      'Acceptance for ages 45-85',
+    ],
+    eligibility: [
+      'Ages 45–85 (varies by carrier)',
+      'Answer basic health questions',
+      'U.S. resident',
+      'Not required to take a medical exam',
+    ],
+    faqs: [
+      { q: 'Do I need a medical exam?', a: 'No. Most final expense plans use simplified underwriting with a health questionnaire instead of a medical exam.' },
+      { q: 'How quickly does coverage start?', a: 'Many plans offer day-one coverage, meaning your full benefit is available immediately upon approval.' },
+      { q: 'What happens if I outlive the policy?', a: 'With whole life final expense, your coverage lasts for your entire lifetime as long as premiums are paid.' },
+      { q: 'Can I cancel the policy?', a: 'You can cancel, but you may receive a reduced surrender value if you cancel early.' },
+    ],
+  },
+  'term-life': {
+    title: 'Term Life Insurance',
+    headline: 'Affordable Protection for Your Family\'s Future',
+    tagline: 'Maximum coverage at the most affordable rates',
+    priceFrom: '$15/mo',
+    ageRange: 'Ages 18–70',
+    description: 'Term life insurance provides coverage for a specific period (10, 20, or 30 years). It offers the highest death benefit for the lowest monthly premium.',
+    features: [
+      { icon: 'calendar', title: 'Flexible Terms', description: 'Choose 10, 20, or 30-year terms' },
+      { icon: 'trending', title: 'Level Premiums', description: 'Your payment stays the same for the entire term' },
+      { icon: 'refresh', title: 'Convertible', description: 'Can convert to permanent coverage later' },
+      { icon: 'check', title: 'Fast Approval', description: 'Apply online in minutes' },
+      { icon: 'shield', title: 'Large Coverage', description: 'Up to $500,000 available' },
+    ],
+    benefits: [
+      'Coverage from $50,000 to $500,000',
+      '10, 20, or 30-year term options',
+      'Level premiums throughout term',
+      'Convertible to permanent coverage',
+      'Fast online approval process',
+    ],
+    eligibility: [
+      'Ages 18–70 (varies by carrier)',
+      'Good health preferred',
+      'U.S. resident',
+      'May require medical exam based on coverage amount',
+    ],
+    faqs: [
+      { q: 'What happens when my term ends?', a: 'You can renew the policy (at a higher rate), convert to permanent coverage, or let it lapse.' },
+      { q: 'Is a medical exam required?', a: 'It depends on your age and coverage amount. Many applicants under age 50 with coverage under $100,000 can skip the exam.' },
+      { q: 'Can I convert to permanent coverage?', a: 'Yes, most term policies are convertible to whole life without a medical exam during the conversion period.' },
+      { q: 'What if my health changes during the term?', a: 'Your premiums and coverage remain the same regardless of health changes during the term.' },
+    ],
+  },
+  'whole-life': {
+    title: 'Whole Life Insurance',
+    headline: 'Lifetime Protection with Cash Value Growth',
+    tagline: 'Permanent coverage that builds value over time',
+    priceFrom: '$25/mo',
+    ageRange: 'Ages 0–85',
+    description: 'Whole life insurance provides permanent coverage and accumulates cash value that you can borrow against while living. It combines protection with a savings component.',
+    features: [
+      { icon: 'home', title: 'Lifetime Coverage', description: 'Coverage lasts your entire life' },
+      { icon: 'piggybank', title: 'Cash Value', description: 'Builds cash value over time you can access' },
+      { icon: 'chart', title: 'Dividends', description: 'May earn dividends on participating policies' },
+      { icon: 'shield', title: 'Estate Planning', description: 'Excellent tool for transferring wealth' },
+      { icon: 'check', title: 'Fixed Premiums', description: 'Your premium never increases' },
+    ],
+    benefits: [
+      'Coverage from $10,000 to $500,000',
+      'Lifelong coverage guaranteed',
+      'Builds cash value over time',
+      'Flexible premium payment options',
+      'Dividends possible with some policies',
+    ],
+    eligibility: [
+      'Ages 0–85 (varies by carrier)',
+      'Good health preferred for best rates',
+      'U.S. resident',
+      'May require medical exam',
+    ],
+    faqs: [
+      { q: 'What is cash value?', a: 'Cash value is a savings component that grows over time. You can borrow against it tax-free or surrender the policy for the cash value.' },
+      { q: 'How are dividends paid?', a: 'Participating whole life policies may pay dividends annually, which can be taken as cash, used to pay premiums, or left to grow.' },
+      { q: 'Can I access the cash value?', a: 'Yes, you can take policy loans against the cash value tax-free, or make partial withdrawals.' },
+      { q: 'What happens if I stop paying premiums?', a: 'If there\'s sufficient cash value, the policy can use it to pay premiums (paid-up option). Otherwise, the policy will lapse.' },
+    ],
+  },
+  'iul': {
+    title: 'Indexed Universal Life (IUL)',
+    headline: 'Growth Potential with Market-Indexed Cash Value',
+    tagline: 'Permanent coverage with market-based growth opportunity',
+    priceFrom: '$20/mo',
+    ageRange: 'Ages 20–60',
+    description: 'Indexed universal life combines permanent death benefit protection with cash value that tracks a market index (like S&P 500). Offers growth potential with downside protection.',
+    features: [
+      { icon: 'chart', title: 'Market Growth', description: 'Cash value tied to market index performance' },
+      { icon: 'sliders', title: 'Flexible Premiums', description: 'Adjust premiums between minimum and maximum' },
+      { icon: 'shield', title: 'Death Benefit', description: 'Permanent death benefit protection' },
+      { icon: 'arrow-up', title: 'Tax Advantages', description: 'Tax-free loans and withdrawals' },
+      { icon: 'bank', title: 'Cash Access', description: 'Access cash value for any purpose' },
+    ],
+    benefits: [
+      'Growth potential tied to market indexes',
+      'Premium flexibility based on budget',
+      'Tax-advantaged access to cash value',
+      'Permanent protection as long as premiums paid',
+      'Can be used for retirement income strategy',
+    ],
+    eligibility: [
+      'Ages 20–60 (varies by carrier)',
+      'Good health required',
+      'Financial review for policy approval',
+      'U.S. resident',
+      'Minimum premium requirements',
+    ],
+    faqs: [
+      { q: 'How is IUL different from traditional whole life?', a: 'IUL cash value is tied to a market index rather than a fixed rate, offering higher growth potential but also more risk.' },
+      { q: 'What happens if the market crashes?', a: 'IUL policies typically have a floor (0% or 1-2%) so your cash value won\'t go negative, and death benefit remains protected.' },
+      { q: 'Can I change my premium?', a: 'Yes, IUL offers flexible premiums between a minimum and maximum amount. You can pay more to build cash value or less to fit your budget.' },
+      { q: 'What are the tax advantages?', a: 'You can borrow against your cash value tax-free, and withdrawals up to your basis are tax-free. Consult a tax professional for details.' },
+    ],
+  },
+};
+
+const { slug } = Astro.params;
+const service = services[slug as keyof typeof services];
+
+// 404 if slug not found
+if (!service) {
+  return Astro.redirect('/404');
+}
+
+const icons: Record<string, string> = {
+  shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
+  clock: 'M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z',
+  dollar: 'M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z',
+  heart: 'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z',
+  check: 'M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+  calendar: 'M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z',
+  trending: 'M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z',
+  refresh: 'M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z',
+  home: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+  piggybank: 'M19 8h-1V6c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v2H3c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1c0 3.31 2.69 6 6 6h1c0 1.66 1.34 3 3 3s3-1.34 3-3h1c3.31 0 6-2.69 6-6 0-3.04-2.13-5.63-5-6.17zM7 6h10v2H7V6z',
+  arrowup: 'M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z',
+  bank: 'M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z',
+  sliders: 'M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z',
+};
+---
+
+<Layout
+  title={`${service.title} — Patriot American Benefits`}
+  description={service.tagline}
+>
+  <!-- Breadcrumbs -->
+  <nav class="bg-cream py-4" aria-label="Breadcrumb">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <ol class="flex items-center gap-2 text-[13px]">
+        <li>
+          <a href="/" class="text-brown-light hover:text-forest transition-colors">Home</a>
+        </li>
+        <li class="text-brown-light">/</li>
+        <li>
+          <a href="/services" class="text-brown-light hover:text-forest transition-colors">Services</a>
+        </li>
+        <li class="text-brown-light">/</li>
+        <li class="text-brown-mid font-medium">{service.title}</li>
+      </ol>
+    </div>
+  </nav>
+
+  <PageHero
+    title={service.title}
+    subtitle={service.headline}
+  />
+
+  <!-- Key Benefits Section -->
+  <section class="bg-cream py-20">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Key Benefits
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,38px)] text-brown-dark text-center mb-16">
+        Why Choose {service.title}
+      </h2>
+
+      <div id="benefits-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {service.features.map((feature) => (
+          <div class="bg-white rounded-[20px] p-6" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+            <div class="w-12 h-12 bg-sage rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={icons[feature.icon] || icons.check} />
+              </svg>
+            </div>
+            <h3 class="font-display font-semibold text-[18px] text-brown-dark mb-2">{feature.title}</h3>
+            <p class="text-[14px] text-brown-mid leading-[1.7]">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider: cream → sage -->
+  <div class="bg-cream overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,10 C480,40 960,0 1440,25 L1440,40 L0,40 Z" fill="#EBF5EE" />
+    </svg>
+  </div>
+
+  <!-- How It Works Section -->
+  <section class="bg-sage py-20">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          How It Works
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,38px)] text-brown-dark text-center mb-16">
+        Get {service.title} in 3 Simple Steps
+      </h2>
+
+      <div id="steps-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-amber rounded-full flex items-center justify-center mb-5">
+            <span class="font-display font-bold text-[28px] text-white">01</span>
+          </div>
+          <h3 class="font-display font-semibold text-[20px] text-brown-dark mb-3">Request a Quote</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">
+            Fill out our simple form with basic information about your coverage needs.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-amber rounded-full flex items-center justify-center mb-5">
+            <span class="font-display font-bold text-[28px] text-white">02</span>
+          </div>
+          <h3 class="font-display font-semibold text-[20px] text-brown-dark mb-3">Compare Options</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">
+            We shop 13+ carriers to find you the best rates and coverage options.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-16 h-16 bg-amber rounded-full flex items-center justify-center mb-5">
+            <span class="font-display font-bold text-[28px] text-white">03</span>
+          </div>
+          <h3 class="font-display font-semibold text-[20px] text-brown-dark mb-3">Get Covered</h3>
+          <p class="text-[15px] text-brown-mid leading-[1.8]">
+            Apply online in minutes and get same-day approval on most plans.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider: sage → cream -->
+  <div class="bg-sage overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,15 C360,40 1080,0 1440,20 L1440,40 L0,40 Z" fill="#F5F0E8" />
+    </svg>
+  </div>
+
+  <!-- Eligibility Section -->
+  <section class="bg-cream py-20">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Eligibility -->
+        <div>
+          <!-- Label pill -->
+          <div class="flex justify-start mb-5">
+            <span class="inline-block px-4 py-1.5 bg-sage border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+              Eligibility
+            </span>
+          </div>
+
+          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-6">Who Qualifies?</h2>
+
+          <ul class="space-y-4">
+            {service.eligibility.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
+                  <circle cx="12" cy="12" r="10" fill="#2D6A4F" fill-opacity="0.12"/>
+                  <path d="M8 12l3 3 5-5" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-[15px] text-brown-mid leading-[1.8]">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Right: Perfect For -->
+        <div>
+          <!-- Label pill -->
+          <div class="flex justify-start mb-5">
+            <span class="inline-block px-4 py-1.5 bg-amber text-white rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+              Perfect For
+            </span>
+          </div>
+
+          <h2 class="font-display font-bold text-[28px] text-brown-dark mb-6">This Plan Is Ideal For...</h2>
+
+          <ul class="space-y-4">
+            {service.benefits.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="shrink-0 mt-0.5">
+                  <circle cx="12" cy="12" r="10" fill="#D97706" fill-opacity="0.12"/>
+                  <path d="M8 12l3 3 5-5" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-[15px] text-brown-mid leading-[1.8]">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider: cream → sage -->
+  <div class="bg-cream overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,10 C480,40 960,0 1440,25 L1440,40 L0,40 Z" fill="#EBF5EE" />
+    </svg>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="bg-sage py-20">
+    <div class="max-w-[800px] mx-auto px-6">
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Common Questions
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,38px)] text-brown-dark text-center mb-12">
+        Frequently Asked Questions
+      </h2>
+
+      <FAQAccordion
+        faqs={service.faqs.map((faq, index) => ({
+          id: `${slug}-${index}`,
+          question: faq.q,
+          answer: faq.a,
+        }))}
+        client:load
+      />
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-forest-dark py-20">
+    <div class="max-w-[800px] mx-auto px-6 text-center">
+      <h2 class="font-display font-bold text-[clamp(28px,4vw,38px)] text-white mb-6">
+        Ready to Get Covered?
+      </h2>
+      <p class="text-[17px] text-forest/80 mb-8 max-w-[540px] mx-auto">
+        Get a personalized quote for {service.title} in minutes. No obligation, no pressure.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href={`/quote?service=${slug}`}
+          class="inline-block bg-amber hover:bg-amber-dark text-white font-bold text-[17px] py-4 px-8 rounded-pill transition-colors duration-200"
+        >
+          Get a {service.title} Quote
+        </a>
+        <a
+          href="/contact"
+          class="inline-block border-2 border-white text-white hover:bg-white hover:text-forest-dark font-bold text-[17px] py-4 px-8 rounded-pill transition-colors duration-200"
+        >
+          Talk to an Agent
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <BottomCTA />
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    gsap.registerPlugin(ScrollTrigger);
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Benefits stagger
+      gsap.from('#benefits-grid > *', {
+        opacity: 0,
+        y: 40,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '#benefits-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+
+      // Steps stagger
+      gsap.from('#steps-grid > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#steps-grid',
+          start: 'top 80%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>

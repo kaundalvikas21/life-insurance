@@ -1,0 +1,127 @@
+---
+// src/pages/quote.astro
+export const prerender = true;
+
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/blocks/PageHero.astro';
+import TestimonialsSection from '../components/blocks/TestimonialsSection.astro';
+import BottomCTA from '../components/blocks/BottomCTA.astro';
+import QuoteForm from '../components/interactive/QuoteForm';
+---
+
+<Layout
+  title="Get Your Free Quote — Patriot American Benefits"
+  description="Request a free life insurance quote in about 2 minutes. No obligation, no pressure. We compare rates from 13+ carriers to find your best option."
+>
+  <PageHero
+    title="Get Your Free Quote"
+    subtitle="No obligation. No pressure. Just the best rate from 13+ carriers in about 2 minutes."
+    breadcrumb="Free Quote"
+  />
+
+  <!-- Quote Form Section -->
+  <section class="bg-cream py-16">
+    <div class="max-w-[1280px] mx-auto px-6">
+      <QuoteForm client:load />
+    </div>
+  </section>
+
+  <!-- Wave divider: cream → sage -->
+  <div class="bg-cream overflow-hidden leading-[0]">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,10 C480,40 960,0 1440,25 L1440,40 L0,40 Z" fill="#EBF5EE" />
+    </svg>
+  </div>
+
+  <!-- Why Quote With Us -->
+  <section class="bg-sage py-20">
+    <div class="max-w-[1280px] mx-auto px-6">
+
+      <!-- Label pill -->
+      <div class="flex justify-center mb-5">
+        <span class="inline-block px-4 py-1.5 bg-white border border-[#B7DFC5] text-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em]">
+          Why Choose Us
+        </span>
+      </div>
+
+      <h2 class="font-display font-bold text-[clamp(32px,4vw,42px)] text-brown-dark text-center mb-12">
+        The Smart Way to Shop Insurance
+      </h2>
+
+      <div id="why-quote-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: We Shop All 13 Carriers -->
+        <div class="bg-white rounded-[20px] p-8 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-5">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" x2="21" y1="6" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[18px] text-brown-dark mb-3">We Shop All 13 Carriers</h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            We compare rates from every carrier we work with to find your best option.
+          </p>
+        </div>
+
+        <!-- Card 2: Zero Cost to You -->
+        <div class="bg-white rounded-[20px] p-8 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-5">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v2m0 8v2M9 9h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9m6-6h-1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[18px] text-brown-dark mb-3">Zero Cost to You</h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Our service is completely free. Carriers compensate us, not you.
+          </p>
+        </div>
+
+        <!-- Card 3: Same-Day Approval Available -->
+        <div class="bg-white rounded-[20px] p-8 text-center" style="box-shadow: 0 8px 32px rgba(93,70,40,0.10)">
+          <div class="flex justify-center mb-5">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[18px] text-brown-dark mb-3">Same-Day Approval Available</h3>
+          <p class="text-[14px] text-brown-mid leading-[1.7]">
+            Many clients get approved and covered the same day they call.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <TestimonialsSection waveBg="sage" />
+
+  <BottomCTA />
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  document.addEventListener('astro:page-load', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('#why-quote-grid > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.12,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#why-quote-grid',
+          start: 'top 85%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>

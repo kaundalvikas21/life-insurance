@@ -1,0 +1,77 @@
+---
+// src/components/blocks/PageHero.astro
+
+interface Props {
+  title: string;
+  subtitle: string;
+  breadcrumb?: string;
+}
+
+const { title, subtitle, breadcrumb } = Astro.props;
+---
+
+<section class="relative bg-forest-dark py-24 md:py-32 overflow-hidden text-center">
+  <!-- Organic blob decoration (top-right) -->
+  <svg
+    class="absolute pointer-events-none opacity-[0.15]"
+    style="top:-60px;right:-80px;width:420px"
+    viewBox="0 0 400 400"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M310,190 C310,275 250,345 165,345 C80,345 30,280 30,195 C30,110 90,45 185,45 C280,45 310,105 310,190Z"
+      fill="#2D6A4F"
+    />
+  </svg>
+  <!-- Secondary blob (bottom-left) -->
+  <svg
+    class="absolute pointer-events-none opacity-[0.10]"
+    style="bottom:-40px;left:-60px;width:320px"
+    viewBox="0 0 400 400"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M260,210 C260,285 205,345 135,345 C65,345 25,285 25,210 C25,135 75,65 160,65 C245,65 260,135 260,210Z"
+      fill="#EBF5EE"
+    />
+  </svg>
+
+  <div style="max-width: var(--container-max)" class="mx-auto px-6 relative z-10">
+    <div id="page-hero-content" class="page-hero-content flex flex-col items-center">
+      {breadcrumb && (
+        <nav aria-label="Breadcrumb">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-forest/40 text-sage border border-forest rounded-pill text-[12px] font-semibold uppercase tracking-[0.14em] mb-6">
+            {breadcrumb}
+          </span>
+        </nav>
+      )}
+
+      <h1 class="font-display font-bold text-[clamp(36px,5vw,52px)] text-white leading-[1.1] mb-5 max-w-[720px]">
+        {title}
+      </h1>
+
+      <p class="text-[18px] text-white/70 leading-[1.8] max-w-[600px] mx-auto">
+        {subtitle}
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+
+  document.addEventListener('astro:page-load', () => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      gsap.from('#page-hero-content > *', {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power3.out',
+      });
+    });
+  });
+</script>

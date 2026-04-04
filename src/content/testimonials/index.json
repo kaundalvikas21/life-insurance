@@ -1,0 +1,56 @@
+[
+  {
+    "id": "dorothy-m",
+    "name": "Dorothy Malone",
+    "location": "Memphis, TN",
+    "rating": 5,
+    "text": "I was nervous about applying at my age, but there was no medical exam — just a few health questions and I was approved the same day. My agent walked me through three different carriers and helped me find the most affordable premium. I finally have peace of mind knowing my family won't be burdened with funeral costs.",
+    "plan_type": "Final Expense",
+    "age": 68
+  },
+  {
+    "id": "james-t",
+    "name": "James Thibodaux",
+    "location": "Baton Rouge, LA",
+    "rating": 4,
+    "text": "My agent took the time to compare six carriers side by side and found me a whole life policy at a rate I could actually afford on a fixed income. Coverage started the same week I applied — no waiting period. I've already recommended this service to two of my siblings.",
+    "plan_type": "Whole Life",
+    "age": 72
+  },
+  {
+    "id": "patricia-k",
+    "name": "Patricia Kendrick",
+    "location": "Columbus, OH",
+    "rating": 5,
+    "text": "After losing my husband and seeing what his final expenses cost, I knew I needed to act fast. The agent was compassionate, never pushy, and found me a final expense plan with level premiums that will never increase. Knowing my children won't go through what I did gives me real comfort.",
+    "plan_type": "Final Expense",
+    "age": 64
+  },
+  {
+    "id": "robert-s",
+    "name": "Robert Sandoval",
+    "location": "San Antonio, TX",
+    "rating": 5,
+    "text": "I have diabetes and was turned down before, but the agent here knew exactly which carriers offer guaranteed issue plans for people with pre-existing conditions. My term life policy was approved within 48 hours and the premiums are very reasonable. I wish I had found this service years ago.",
+    "plan_type": "Term Life",
+    "age": 61
+  },
+  {
+    "id": "helen-w",
+    "name": "Helen Winters",
+    "location": "Phoenix, AZ",
+    "rating": 4,
+    "text": "The whole process was so simple — a short phone call, a few questions, and my final expense policy was active the same day. No doctor visits, no blood draws, nothing complicated. My agent explained every detail of the policy so I understood exactly what my family would receive.",
+    "plan_type": "Final Expense",
+    "age": 75
+  },
+  {
+    "id": "charles-b",
+    "name": "Charles Beaumont",
+    "location": "Atlanta, GA",
+    "rating": 5,
+    "text": "I wanted a whole life policy that would build cash value over time and still be affordable. My agent compared multiple carriers and found the perfect fit — locked-in premiums, a guaranteed death benefit, and coverage that doesn't expire. I feel confident my family is protected no matter what.",
+    "plan_type": "Whole Life",
+    "age": 58
+  }
+]
