@@ -8,10 +8,9 @@ import HowItWorks    from '../components/blocks/HowItWorks.astro';
 import CarrierLogos  from '../components/blocks/CarrierLogos.astro';
 import BottomCTA     from '../components/blocks/BottomCTA.astro';
 import FAQAccordion  from '../components/interactive/FAQAccordion';
-import { getCollection } from 'astro:content';
+import faqData from '../content/faqs/index.json';
 
-const faqEntries = await getCollection('faqs');
-const faqs = faqEntries.map((e) => e.data).slice(0, 5);
+const faqs = faqData.slice(0, 5);
 ---
 
 <Layout
