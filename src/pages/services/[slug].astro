@@ -3,6 +3,11 @@
 import Layout from '../../layouts/Layout.astro';
 import BottomCTA from '../../components/blocks/BottomCTA.astro';
 import FAQAccordion from '../../components/interactive/FAQAccordion.tsx';
+import { Image } from 'astro:assets';
+import serviceFinalExpense from '../../assets/images/service-final-expense.jpg';
+import serviceTermLife from '../../assets/images/service-term-life.jpg';
+import serviceWholeLife from '../../assets/images/service-whole-life.jpg';
+import serviceIul from '../../assets/images/service-iul.jpg';
 
 // Service data
 const services = {
@@ -12,6 +17,7 @@ const services = {
     tagline: 'Burial coverage with no doctor visit required',
     priceFrom: '$9/mo',
     ageRange: 'Ages 45–85',
+    image: { img: serviceFinalExpense, alt: 'Elderly couple smiling together outdoors — peace of mind with final expense coverage' },
     description: 'Final expense insurance is designed to cover funeral costs, medical bills, and other end-of-life expenses. Your family receives the death benefit tax-free and can use it immediately for your burial expenses.',
     features: [
       { icon: 'shield', title: 'No Medical Exam', description: 'Most plans qualify you with a short yes/no health questionnaire. No labs, no doctor visit required.' },
@@ -47,6 +53,7 @@ const services = {
     tagline: 'The most coverage for the lowest monthly cost',
     priceFrom: '$15/mo',
     ageRange: 'Ages 18–70',
+    image: { img: serviceTermLife, alt: 'Happy family of four smiling outdoors — protected by term life insurance' },
     description: 'Term life insurance provides coverage for a specific period (10, 20, or 30 years). It offers the highest death benefit for the lowest monthly premium.',
     features: [
       { icon: 'calendar', title: 'Flexible Terms', description: 'Choose a 10, 20, or 30-year term to match your mortgage payoff window, income replacement need, or other time-limited goal.' },
@@ -82,6 +89,7 @@ const services = {
     tagline: 'Coverage that doesn\'t expire and builds cash value',
     priceFrom: '$25/mo',
     ageRange: 'Ages 0–85',
+    image: { img: serviceWholeLife, alt: 'Multi-generational family portrait outdoors — lifelong whole life coverage' },
     description: 'Whole life insurance provides permanent coverage and accumulates cash value that you can borrow against while living. It combines protection with a savings component.',
     features: [
       { icon: 'home', title: 'Lifetime Coverage', description: 'Unlike term, whole life never expires. Coverage stays in force for your entire life as long as premiums are paid.' },
@@ -117,6 +125,7 @@ const services = {
     tagline: 'Permanent coverage with cash value tied to market indexes',
     priceFrom: '$20/mo',
     ageRange: 'Ages 20–60',
+    image: { img: serviceIul, alt: 'Reviewing investment documents with calculator — planning IUL strategy for retirement' },
     description: 'Indexed universal life combines permanent death benefit protection with cash value that tracks a market index (like S&P 500). Offers growth potential with downside protection.',
     features: [
       { icon: 'target', title: 'Market-Linked Growth', description: 'Cash value earns interest based on a market index like the S&P 500, without directly investing in the market.' },
@@ -189,7 +198,7 @@ const icons: Record<string, string> = {
   description={service.tagline}
 >
   <!-- Two-column service hero -->
-  <section class="relative bg-forest-dark py-20 md:py-28 overflow-hidden">
+  <section class="relative bg-forest-dark pt-[152px] pb-20 md:pt-[184px] md:pb-28 overflow-hidden">
     <!-- Background blobs -->
     <svg class="absolute pointer-events-none opacity-[0.15]" style="top:-60px;right:-80px;width:420px" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M310,190 C310,275 250,345 165,345 C80,345 30,280 30,195 C30,110 90,45 185,45 C280,45 310,105 310,190Z" fill="#2D6A4F" />
@@ -236,40 +245,18 @@ const icons: Record<string, string> = {
           </div>
         </div>
 
-        <!-- Right: stats card -->
-        <div class="lg:w-[42%] w-full">
-          <div class="bg-white/8 border border-white/15 rounded-3xl p-8 backdrop-blur-sm">
-            <!-- Icon -->
-            <div class="w-14 h-14 bg-forest/60 rounded-2xl flex items-center justify-center mb-6">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d={icons[service.features[0].icon] || icons.shield} />
-              </svg>
-            </div>
-            <!-- Price + Age -->
-            <div class="flex items-center gap-4 mb-6">
-              <div class="bg-amber/20 border border-amber/30 rounded-xl px-4 py-2">
-                <p class="text-[11px] text-amber/80 font-semibold uppercase tracking-[0.1em]">Starting From</p>
-                <p class="text-[22px] font-display font-bold text-amber leading-none mt-0.5">{service.priceFrom}</p>
-              </div>
-              <div class="bg-white/10 rounded-xl px-4 py-2">
-                <p class="text-[11px] text-white/60 font-semibold uppercase tracking-[0.1em]">Eligible Ages</p>
-                <p class="text-[16px] font-display font-bold text-white leading-none mt-0.5">{service.ageRange}</p>
-              </div>
-            </div>
-            <!-- Top 3 benefits -->
-            <ul class="space-y-3">
-              {service.benefits.slice(0, 3).map((b: string) => (
-                <li class="flex items-start gap-3 text-[14px] text-white/80">
-                  <span class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-forest/60 flex items-center justify-center">
-                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                      <path d="M2.5 6.5l2.5 2.5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <!-- Right: hero image -->
+        <div class="lg:w-[42%] w-full relative">
+          <div class="absolute -inset-3 bg-amber/10 rounded-3xl blur-xl pointer-events-none"></div>
+          <Image
+            src={service.image.img}
+            alt={service.image.alt}
+            width={600}
+            height={450}
+            loading="eager"
+            class="relative rounded-3xl w-full object-cover"
+            style="box-shadow: 0 16px 48px rgba(93,70,40,0.22); aspect-ratio: 4/3"
+          />
         </div>
 
       </div>
