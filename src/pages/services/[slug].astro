@@ -211,7 +211,7 @@ const icons: Record<string, string> = {
       <div id="service-hero-content" class="flex flex-col lg:flex-row items-center gap-12">
 
         <!-- Left: text + CTAs -->
-        <div class="lg:w-[58%]">
+        <div id="service-hero-left" class="lg:w-[58%]">
           <!-- Breadcrumb trail -->
           <nav aria-label="Breadcrumb" class="mb-5">
             <ol class="flex items-center gap-1.5 text-[13px]">
@@ -246,7 +246,7 @@ const icons: Record<string, string> = {
         </div>
 
         <!-- Right: hero image -->
-        <div class="lg:w-[42%] w-full relative">
+        <div id="service-hero-right" class="lg:w-[42%] w-full relative">
           <div class="absolute -inset-3 bg-amber/10 rounded-3xl blur-xl pointer-events-none"></div>
           <Image
             src={service.image.img}
@@ -498,8 +498,25 @@ const icons: Record<string, string> = {
     gsap.registerPlugin(ScrollTrigger);
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.from('#benefits-grid > *', {
+      // Hero entrance — mirrors home hero pattern
+      const tl = gsap.timeline();
+      tl.from('#service-hero-left > *', {
         opacity: 0,
+        y: 30,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: 'power3.out',
+      });
+      gsap.from('#service-hero-right', {
+        opacity: 0,
+        x: 40,
+        duration: 0.8,
+        delay: 0.3,
+        ease: 'power3.out',
+      });
+
+      gsap.from('#benefits-grid > *', {
+        autoAlpha: 0,
         y: 28,
         duration: 0.55,
         stagger: 0.08,
@@ -512,7 +529,7 @@ const icons: Record<string, string> = {
       });
 
       gsap.from('#steps-grid > *', {
-        opacity: 0,
+        autoAlpha: 0,
         y: 30,
         duration: 0.6,
         stagger: 0.15,
@@ -524,5 +541,14 @@ const icons: Record<string, string> = {
         },
       });
     });
+
+    // Recalculate ScrollTrigger positions after hero images finish loading.
+    // On cold load large images push content down after GSAP initialises,
+    // causing triggers to fire at wrong scroll positions (jerky effect).
+    if (document.readyState === 'complete') {
+      ScrollTrigger.refresh();
+    } else {
+      window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+    }
   });
 </script>
