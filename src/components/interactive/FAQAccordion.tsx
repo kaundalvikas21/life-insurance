@@ -1,6 +1,5 @@
 // src/components/interactive/FAQAccordion.tsx
-import { useState, useRef } from 'react';
-import gsap from 'gsap';
+import { useState } from 'react';
 
 interface FAQ {
   question: string;
@@ -15,43 +14,9 @@ interface Props {
 
 export default function FAQAccordion({ faqs, showHeading = true, showCTA = true }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const answerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const toggle = (i: number) => {
-    const wasOpen = openIndex === i;
-
-    // Close previously open item if different
-    if (openIndex !== null && openIndex !== i) {
-      const prevEl = answerRefs.current[openIndex];
-      if (prevEl) {
-        gsap.to(prevEl, {
-          height: 0,
-          duration: 0.3,
-          ease: 'power2.inOut',
-        });
-      }
-    }
-
-    // Handle current item
-    const answerEl = answerRefs.current[i];
-    if (answerEl) {
-      if (wasOpen) {
-        // Close current — update state immediately so tests/aria reflect truth
-        setOpenIndex(null);
-        gsap.to(answerEl, { height: 0, duration: 0.4, ease: 'power2.inOut' });
-      } else {
-        // Open current
-        const naturalHeight = answerEl.scrollHeight;
-        answerEl.style.height = '0px';
-        setOpenIndex(i);
-        gsap.to(answerEl, {
-          height: naturalHeight,
-          duration: 0.4,
-          ease: 'power2.inOut',
-          onComplete: () => { answerEl.style.height = 'auto'; },
-        });
-      }
-    }
+    setOpenIndex(openIndex === i ? null : i);
   };
 
   return (
@@ -88,22 +53,23 @@ export default function FAQAccordion({ faqs, showHeading = true, showCTA = true 
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                    className="shrink-0 ml-4 transition-transform duration-200"
+                    className={`shrink-0 ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
                     aria-hidden="true"
                   >
                     <polyline points="6 9 12 15 18 9" />
                   </svg>
                 </button>
                 <div
-                  ref={(el) => { answerRefs.current[i] = el; }}
                   id={`faq-answer-${i}`}
-                  className="px-6 text-[15px] text-brown-mid leading-[1.85] overflow-hidden"
-                  style={{ height: 0 }}
+                  className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
                   role="region"
                   aria-hidden={!isOpen}
                 >
-                  <div className="pb-6">{faq.answer}</div>
+                  <div className="overflow-hidden min-h-0">
+                    <div className="px-6 pb-6 text-[15px] text-brown-mid leading-[1.85]">
+                      {faq.answer}
+                    </div>
+                  </div>
                 </div>
               </div>
             );
