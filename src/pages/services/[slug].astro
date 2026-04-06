@@ -4,6 +4,15 @@ import Layout from '../../layouts/Layout.astro';
 import BottomCTA from '../../components/blocks/BottomCTA.astro';
 import FAQAccordion from '../../components/interactive/FAQAccordion.tsx';
 
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'final-expense' } },
+    { params: { slug: 'term-life' } },
+    { params: { slug: 'whole-life' } },
+    { params: { slug: 'iul' } },
+  ];
+}
+
 // Service data
 const services = {
   'final-expense': {
